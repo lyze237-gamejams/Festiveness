@@ -1,5 +1,7 @@
 package dev.lyze.festive.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,36 +19,19 @@ public class TestScreen extends ScreenAdapter {
     private final ExtendViewport viewport = new ExtendViewport(19, 8);
     private final SpriteBatch batch = new SpriteBatch();
 
+    private final Player player;
+
     public TestScreen() {
         new Ground(unbox);
-        new Player(unbox);
-
-        unbox.getPhysicsWorld().getWorld().setContactListener(new ContactListener() {
-            @Override
-            public void beginContact(Contact contact) {
-
-            }
-
-            @Override
-            public void endContact(Contact contact) {
-
-            }
-
-            @Override
-            public void preSolve(Contact contact, Manifold oldManifold) {
-
-            }
-
-            @Override
-            public void postSolve(Contact contact, ContactImpulse impulse) {
-
-            }
-        });
+        player = new Player(unbox);
     }
 
     @Override
     public void render(float delta) {
         ScreenUtils.clear(Color.BLACK);
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE))
+            player.getBalancer().setEnabled(!player.getBalancer().isEnabled());
 
         unbox.preRender(delta);
         viewport.apply();
