@@ -22,10 +22,10 @@ public class ToolControlsBehaviour extends BehaviourAdapter {
 
     @Override
     public void update(float delta) {
-        left = Gdx.input.isKeyPressed(Input.Keys.LEFT);
-        right = Gdx.input.isKeyPressed(Input.Keys.RIGHT);
-        up = Gdx.input.isKeyPressed(Input.Keys.UP);
-        down = Gdx.input.isKeyPressed(Input.Keys.DOWN);
+        left = Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A);
+        right = Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D);
+        up = Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W);
+        down = Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S);
     }
 
     @Override
