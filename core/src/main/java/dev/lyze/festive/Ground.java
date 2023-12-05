@@ -4,37 +4,29 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
+import dev.lyze.gdxUnBox2d.BodyDefType;
 import dev.lyze.gdxUnBox2d.Box2dPhysicsWorld;
 import dev.lyze.gdxUnBox2d.GameObject;
+import dev.lyze.gdxUnBox2d.UnBox;
 import dev.lyze.gdxUnBox2d.behaviours.Box2dBehaviour;
+import dev.lyze.gdxUnBox2d.behaviours.fixtures.CreateBoxFixtureBehaviour;
 
-public class Ground extends Box2dBehaviour {
-    public Ground(Vector2 initPos, Vector2 dim, float density, int cbit, int mbit, GameObject gameObject) {
-        super(createBody(initPos, ((Box2dPhysicsWorld) gameObject.getUnBox().getPhysicsWorld())), gameObject);
+public class Ground {
+    private GameObject gameObject;
+    private Box2dBehaviour physicsBehaviour;
 
-        PolygonShape shape = new PolygonShape();
-        shape.setAsBox(dim.x / Constants.PPM, dim.y / Constants.PPM);
+    public Ground(UnBox<Box2dPhysicsWorld> unBox) {
+        gameObject = new GameObject(unBox);
+        physicsBehaviour = new Box2dBehaviour(BodyDefType.StaticBody, gameObject);
 
-        FixtureDef fdef = new FixtureDef();
-        fdef.shape = shape;
-        fdef.density = density;
-        fdef.restitution = 0;
-        fdef.friction = 0.5f;
-        fdef.filter.categoryBits = (short) cbit;
-        fdef.filter.maskBits = (short) mbit;
+        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.density = 1;
+        fixtureDef.restitution = 0;
+        fixtureDef.friction = 0.5f;
+        fixtureDef.filter.categoryBits = Constants.Bit_land;
+        fixtureDef.filter.maskBits = (short) (Constants.Bit_enimes | Constants.Bit_Player_Front | Constants.Bit_Player_Back | Constants.Bit_Tool);
 
-        getBody().createFixture(fdef);
-
-        shape.dispose();
-    }
-
-    private static Body createBody(Vector2 initPos, Box2dPhysicsWorld physicsWorld) {
-        BodyDef bdef = new BodyDef();
-        bdef.type = BodyDef.BodyType.StaticBody;
-        bdef.position.set(initPos.x / Constants.PPM, initPos.y / Constants.PPM);
-
-        return physicsWorld.getWorld().createBody(bdef);
+        new CreateBoxFixtureBehaviour(5000 / Constants.PPM, 5 / Constants.PPM, new Vector2(0, -2), fixtureDef, gameObject);
     }
 }
 

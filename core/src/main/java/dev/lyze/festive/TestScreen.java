@@ -17,6 +17,7 @@ public class TestScreen extends ScreenAdapter {
     private final SpriteBatch batch = new SpriteBatch();
 
     public TestScreen() {
+        new Ground(unbox);
         new Player(unbox);
 
         unbox.getPhysicsWorld().getWorld().setContactListener(new ContactListener() {

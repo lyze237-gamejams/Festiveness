@@ -19,8 +19,6 @@ public class Player {
     public Player(UnBox<Box2dPhysicsWorld> unBox) {
         float len = 2f;
 
-        new Ground(new Vector2(0, -2), new Vector2(5000, 5), 1, Constants.Bit_land, (Constants.Bit_enimes | Constants.Bit_Player_Front | Constants.Bit_Player_Back | Constants.Bit_Tool), new GameObject(unBox));
-
         frontFoot1 = new BodyPart(new Vector2(0, 50), new Vector2(len + len, len), .5f, Constants.Bit_Player_Front, Constants.Bit_enimes | Constants.Bit_land | Constants.Bit_Player_Front | Constants.Bit_Tool, unBox);
         frontFoot2 = new BodyPart(new Vector2(8, 50), new Vector2(len + len / 2, len), 0.5f, Constants.Bit_Player_Front, (Constants.Bit_enimes | Constants.Bit_land | Constants.Bit_Player_Front | Constants.Bit_Tool), unBox);
         frontLeg = new BodyPart(new Vector2(-4, 63), new Vector2(len, len * 4f), 0.8f, Constants.Bit_Player_Front, (Constants.Bit_enimes | Constants.Bit_land | Constants.Bit_Player_Front | Constants.Bit_Tool), unBox);

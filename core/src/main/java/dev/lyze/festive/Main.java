@@ -8,13 +8,6 @@ public class Main extends Game {
 
     @Override
     public void create() {
-    }
-
-    @Override
-    public void render() {
-        super.render();
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY))
-            setScreen(new TestScreen());
+        setScreen(new TestScreen());
     }
 }
