@@ -1,0 +1,40 @@
+{"skeleton":{"images":""},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"scarf","bone":"root","attachment":"scarf"},
+	{"name":"toes","bone":"root","attachment":"toes"},
+	{"name":"feet","bone":"root","attachment":"feet"},
+	{"name":"lower legs","bone":"root","attachment":"lower legs"},
+	{"name":"tail","bone":"root","attachment":"tail"},
+	{"name":"upper legs","bone":"root","attachment":"upper legs"},
+	{"name":"low tors","bone":"root","attachment":"low tors"},
+	{"name":"mid tors","bone":"root","attachment":"mid tors"},
+	{"name":"upper tors","bone":"root","attachment":"upper tors"},
+	{"name":"Layer 18","bone":"root","attachment":"Layer 18"},
+	{"name":"neck","bone":"root","attachment":"neck"},
+	{"name":"hand","bone":"root","attachment":"hand"},
+	{"name":"low arm","bone":"root","attachment":"low arm"},
+	{"name":"up arm","bone":"root","attachment":"up arm"},
+	{"name":"lyze_gamejam","bone":"root","attachment":"lyze_gamejam"}
+],
+"skins":{
+	"default":{
+		"scarf":{"scarf":{"x":964,"y":1494,"width":406,"height":1044}},
+		"toes":{"toes":{"x":1371,"y":199,"width":210,"height":86}},
+		"feet":{"feet":{"x":1112,"y":220,"width":444,"height":128}},
+		"lower legs":{"lower legs":{"x":1116,"y":540,"width":208,"height":650}},
+		"tail":{"tail":{"x":847,"y":800,"width":396,"height":944}},
+		"upper legs":{"upper legs":{"x":1095.5,"y":844,"width":285,"height":960}},
+		"low tors":{"low tors":{"x":1099,"y":1289,"width":534,"height":460}},
+		"mid tors":{"mid tors":{"x":1119,"y":1431.5,"width":242,"height":237}},
+		"upper tors":{"upper tors":{"x":1135,"y":1723,"width":356,"height":550}},
+		"Layer 18":{"Layer 18":{"x":1150.5,"y":2196,"width":721,"height":586}},
+		"neck":{"neck":{"x":1078,"y":1979,"width":178,"height":120}},
+		"hand":{"hand":{"x":1097,"y":858.5,"width":338,"height":629}},
+		"low arm":{"low arm":{"x":1056,"y":1323.5,"width":294,"height":627}},
+		"up arm":{"up arm":{"x":1092.5,"y":1687,"width":327,"height":586}},
+		"lyze_gamejam":{"lyze_gamejam":{"x":1117,"y":1339,"width":2234,"height":2678}}
+	}
+},
+"animations":{"animation":{}}
+}

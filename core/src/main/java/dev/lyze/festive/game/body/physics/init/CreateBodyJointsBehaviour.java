@@ -21,8 +21,8 @@ public class CreateBodyJointsBehaviour extends BehaviourAdapter {
         var world = (World) getUnBox().getPhysicsWorld().getWorld();
 
         RevoluteJointDef rdef = new RevoluteJointDef();
-        rdef.bodyA = player.getFrontFoot1().getBody();
-        rdef.bodyB = player.getFrontLeg().getBody();
+        rdef.bodyA = player.getFrontFoot().getBody();
+        rdef.bodyB = player.getFrontLowerLeg().getBody();
         rdef.collideConnected = false;
         rdef.localAnchorA.set(-((Constants.Length - (Constants.Length / 2)) / Constants.PPM), 0);
         rdef.localAnchorB.set(0, -((Constants.Length * 5 - (Constants.Length / 2)) / Constants.PPM));
@@ -32,7 +32,7 @@ public class CreateBodyJointsBehaviour extends BehaviourAdapter {
 
         world.createJoint(rdef);
 
-        rdef.bodyB = player.getFrontFoot2().getBody();
+        rdef.bodyB = player.getFrontToes().getBody();
         rdef.localAnchorA.set((Constants.Length + Constants.Length / 2) / Constants.PPM, 0);
         rdef.localAnchorB.set(-((Constants.Length + Constants.Length / 2) / Constants.PPM), 0);
         rdef.lowerAngle = 0;
@@ -41,8 +41,8 @@ public class CreateBodyJointsBehaviour extends BehaviourAdapter {
 
         world.createJoint(rdef);
 
-        rdef.bodyA = player.getFrontTighs().getBody();
-        rdef.bodyB = player.getFrontLeg().getBody();
+        rdef.bodyA = player.getFrontUpperLeg().getBody();
+        rdef.bodyB = player.getFrontLowerLeg().getBody();
         rdef.localAnchorA.set(0, -(Constants.Length * 5 - (Constants.Length / 2)) / Constants.PPM);
         rdef.localAnchorB.set(0, ((Constants.Length * 4 - (Constants.Length / 2)) / Constants.PPM));
         rdef.upperAngle = 0;
@@ -130,8 +130,8 @@ public class CreateBodyJointsBehaviour extends BehaviourAdapter {
 
 
         //bqck joiminh---------------------------------------------------------------------------------
-        rdef.bodyA = player.getBackFoot1().getBody();
-        rdef.bodyB = player.getBackLeg().getBody();
+        rdef.bodyA = player.getBackFoot().getBody();
+        rdef.bodyB = player.getBackLowerLeg().getBody();
         rdef.localAnchorA.set(-((Constants.Length - (Constants.Length / 2)) / Constants.PPM), 0);
         rdef.localAnchorB.set(0, -((Constants.Length * 5 - (Constants.Length / 2)) / Constants.PPM));
         rdef.lowerAngle = (float) (-0.2f * Math.PI);
@@ -140,7 +140,7 @@ public class CreateBodyJointsBehaviour extends BehaviourAdapter {
 
         world.createJoint(rdef);
 
-        rdef.bodyB = player.getBackFoot2().getBody();
+        rdef.bodyB = player.getBackToes().getBody();
         rdef.localAnchorA.set((Constants.Length + Constants.Length / 2) / Constants.PPM, 0);
         rdef.localAnchorB.set(-((Constants.Length + Constants.Length / 2) / Constants.PPM), 0);
         rdef.lowerAngle = 0;
@@ -149,8 +149,8 @@ public class CreateBodyJointsBehaviour extends BehaviourAdapter {
 
         world.createJoint(rdef);
 
-        rdef.bodyA = player.getBackTighs().getBody();
-        rdef.bodyB = player.getBackLeg().getBody();
+        rdef.bodyA = player.getBackUpperLeg().getBody();
+        rdef.bodyB = player.getBackLowerLeg().getBody();
         rdef.localAnchorA.set(0, -(Constants.Length * 5 - (Constants.Length / 2)) / Constants.PPM);
         rdef.localAnchorB.set(0, ((Constants.Length * 4 - (Constants.Length / 2)) / Constants.PPM));
         rdef.upperAngle = 0;

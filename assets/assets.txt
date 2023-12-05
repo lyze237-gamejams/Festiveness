@@ -1,1 +1,18 @@
+booper.png
 libgdx.png
+Morgi/feet.png
+Morgi/hand.png
+Morgi/head.png
+Morgi/low arm.png
+Morgi/low tors.png
+Morgi/lower legs.png
+Morgi/lyze_gamejam.png
+Morgi/mid tors.png
+Morgi/neck.png
+Morgi/scarf.png
+Morgi/Spine.json
+Morgi/tail.png
+Morgi/toes.png
+Morgi/up arm.png
+Morgi/upper legs.png
+Morgi/upper tors.png
