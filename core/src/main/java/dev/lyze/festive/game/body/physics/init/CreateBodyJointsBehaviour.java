@@ -92,6 +92,15 @@ public class CreateBodyJointsBehaviour extends BehaviourAdapter {
 
         world.createJoint(rdef);
 
+        rdef.bodyA = player.getFrontHand().getBody();
+        rdef.bodyB = player.getFrontFingers().getBody();
+        rdef.localAnchorA.set(0, -(Constants.Length * 3) / Constants.PPM);
+        rdef.localAnchorB.set(0, (Constants.Length * 3) / Constants.PPM);
+        rdef.upperAngle = (float) (0.4f * Math.PI);
+        rdef.lowerAngle = 0;
+
+        world.createJoint(rdef);
+
         rdef.bodyA = player.getBackArm().getBody();
         rdef.bodyB = player.getStomach3().getBody();
         rdef.localAnchorA.set(0, (Constants.Length * 3) / Constants.PPM);
@@ -110,6 +119,14 @@ public class CreateBodyJointsBehaviour extends BehaviourAdapter {
 
         world.createJoint(rdef);
 
+        rdef.bodyA = player.getBackHand().getBody();
+        rdef.bodyB = player.getBackFingers().getBody();
+        rdef.localAnchorA.set(0, -(Constants.Length * 3) / Constants.PPM);
+        rdef.localAnchorB.set(0, (Constants.Length * 3) / Constants.PPM);
+        rdef.upperAngle = (float) (0.4f * Math.PI);
+        rdef.lowerAngle = 0;
+
+        world.createJoint(rdef);
 
         rdef.bodyA = player.getNeck().getBody();
         rdef.bodyB = player.getStomach3().getBody();
