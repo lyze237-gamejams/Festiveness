@@ -1,8 +1,7 @@
 package dev.lyze.festive;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
+import dev.lyze.festive.game.TestScreen;
 
 public class Main extends Game {
 

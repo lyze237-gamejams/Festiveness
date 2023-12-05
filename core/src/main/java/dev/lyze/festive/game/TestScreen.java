@@ -1,4 +1,4 @@
-package dev.lyze.festive;
+package dev.lyze.festive.game;
 
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import dev.lyze.festive.game.body.Player;
 import dev.lyze.gdxUnBox2d.Box2dPhysicsWorld;
 import dev.lyze.gdxUnBox2d.UnBox;
 

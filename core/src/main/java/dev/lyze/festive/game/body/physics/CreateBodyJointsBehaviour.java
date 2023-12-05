@@ -1,7 +1,9 @@
-package dev.lyze.festive;
+package dev.lyze.festive.game.body.physics;
 
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.joints.RevoluteJointDef;
+import dev.lyze.festive.Constants;
+import dev.lyze.festive.game.body.Player;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
 

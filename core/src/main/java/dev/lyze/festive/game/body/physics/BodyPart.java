@@ -1,8 +1,9 @@
-package dev.lyze.festive;
+package dev.lyze.festive.game.body.physics;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
+import dev.lyze.festive.Constants;
 import dev.lyze.gdxUnBox2d.Box2dPhysicsWorld;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.UnBox;
