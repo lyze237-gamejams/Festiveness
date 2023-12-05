@@ -38,7 +38,7 @@ public class TestScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-        ScreenUtils.clear(Color.BLACK);
+        ScreenUtils.clear(0.2f, 0.1f, 0.3f, 1f);
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE))
             player.getBalancer().setEnabled(!player.getBalancer().isEnabled());
@@ -55,9 +55,9 @@ public class TestScreen extends ScreenAdapter {
         batch.end();
 
         renderer.setProjectionMatrix(viewport.getCamera().combined);
-        box2DDebugRenderer.render(unbox.getPhysicsWorld().getWorld(), viewport.getCamera().combined);
+        //box2DDebugRenderer.render(unbox.getPhysicsWorld().getWorld(), viewport.getCamera().combined);
         renderer.begin(ShapeRenderer.ShapeType.Line);
-        unbox.debugRender(renderer);
+        //unbox.debugRender(renderer);
         renderer.end();
 
         unbox.postRender();
