@@ -55,9 +55,9 @@ public class TestScreen extends ScreenAdapter {
         batch.end();
 
         renderer.setProjectionMatrix(viewport.getCamera().combined);
-        //box2DDebugRenderer.render(unbox.getPhysicsWorld().getWorld(), viewport.getCamera().combined);
+        box2DDebugRenderer.render(unbox.getPhysicsWorld().getWorld(), viewport.getCamera().combined);
         renderer.begin(ShapeRenderer.ShapeType.Line);
-        //unbox.debugRender(renderer);
+        unbox.debugRender(renderer);
         renderer.end();
 
         unbox.postRender();
