@@ -7,6 +7,7 @@ import com.gempukku.libgdx.camera2d.Camera2DController;
 import com.gempukku.libgdx.camera2d.UpdateCameraControl;
 import com.gempukku.libgdx.camera2d.constraint.LockedCamera2DConstraint;
 import com.gempukku.libgdx.camera2d.constraint.LockedToWindowCamera2DConstraint;
+import com.gempukku.libgdx.camera2d.constraint.SceneCamera2DConstraint;
 import com.gempukku.libgdx.camera2d.constraint.SnapToWindowCamera2DConstraint;
 import com.gempukku.libgdx.camera2d.focus.EntityFocus;
 import dev.lyze.festive.game.body.Player;
@@ -31,7 +32,8 @@ public class CameraBehaviour extends BehaviourAdapter {
         controller = new Camera2DController(
             new EntityFocus(position -> player.getStomach2().getBody().getPosition()),
             new SnapToWindowCamera2DConstraint(new Rectangle(snapPos, snapPos, snapSize, snapSize), new Vector2(0.2f, 0.2f)),
-            new LockedToWindowCamera2DConstraint(new Rectangle(lockPos, lockPos, lockSize, lockSize))
+            new LockedToWindowCamera2DConstraint(new Rectangle(lockPos, lockPos, lockSize, lockSize)),
+            new SceneCamera2DConstraint(new Rectangle(0, 0, 20000f, 20000f))
             );
     }
 
