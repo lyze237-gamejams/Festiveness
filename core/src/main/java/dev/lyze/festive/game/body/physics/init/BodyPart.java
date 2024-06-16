@@ -13,8 +13,8 @@ public class BodyPart {
     private final Box2dBehaviour physicsBehaviour;
     private final CreateBodyPartFixtureBehaviour bodyPartBehaviour;
 
-    public BodyPart(Vector2 initPos, Vector2 dim, float density, int cbit, int mbit, UnBox unBox) {
-        gameObject = new GameObject(unBox);
+    public BodyPart(String name, Vector2 initPos, Vector2 dim, float density, int cbit, int mbit, UnBox unBox) {
+        gameObject = new GameObject(name, unBox);
 
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;

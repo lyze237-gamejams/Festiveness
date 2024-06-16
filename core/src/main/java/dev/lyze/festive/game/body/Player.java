@@ -33,48 +33,48 @@ public class Player {
     }
 
     private void setupPhysicsBodyParts(UnBox unBox) {
-        backFoot = new BodyPart(new Vector2(0, 50), new Vector2(Constants.Length + Constants.Length, Constants.Length), .5f, Constants.Bit_PlayerBack, Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerBack | Constants.Bit_Tools, unBox);
+        backFoot = new BodyPart("Back Foot", new Vector2(0, 50), new Vector2(Constants.Length + Constants.Length, Constants.Length), .5f, Constants.Bit_PlayerBack, Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerBack | Constants.Bit_Tools, unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/feet.png"), backFoot, false, gameObject);
-        backToes = new BodyPart(new Vector2(8, 50), new Vector2(Constants.Length + Constants.Length / 2, Constants.Length), 0.5f, Constants.Bit_PlayerBack, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
+        backToes = new BodyPart("Back Toes", new Vector2(8, 50), new Vector2(Constants.Length + Constants.Length / 2, Constants.Length), 0.5f, Constants.Bit_PlayerBack, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/toes.png"), backToes, false, gameObject);
-        backLowerLeg = new BodyPart(new Vector2(-4, 63), new Vector2(Constants.Length, Constants.Length * 4f), 0.8f, Constants.Bit_PlayerBack, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
+        backLowerLeg = new BodyPart("Back Lower Leg", new Vector2(-4, 63), new Vector2(Constants.Length, Constants.Length * 4f), 0.8f, Constants.Bit_PlayerBack, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/lower legs.png"), backLowerLeg, false, gameObject);
-        backUpperLeg = new BodyPart(new Vector2(-4, 80), new Vector2(Constants.Length, Constants.Length * 5f), 0.7f, Constants.Bit_PlayerBack, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
+        backUpperLeg = new BodyPart("Back Upper Leg", new Vector2(-4, 80), new Vector2(Constants.Length, Constants.Length * 5f), 0.7f, Constants.Bit_PlayerBack, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/upper legs.png"), backUpperLeg, false, gameObject);
 
-        backArm = new BodyPart(new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerBack, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
+        backArm = new BodyPart("Back Arm", new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerBack, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/up arm.png"), backArm, false, gameObject);
-        backHand = new BodyPart(new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
+        backHand = new BodyPart("Back Hand", new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/low arm.png"), backHand, false, gameObject);
-        backFingers = new BodyPart(new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
+        backFingers = new BodyPart("Back Fingers", new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/hand.png"), backFingers, false, gameObject);
 
-        stomach1 = new BodyPart(new Vector2(-4, 90), new Vector2(Constants.Length * 1.5f, Constants.Length * 2.5f), 0.5f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
+        stomach1 = new BodyPart("Stomach 1", new Vector2(-4, 90), new Vector2(Constants.Length * 1.5f, Constants.Length * 2.5f), 0.5f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/low tors.png"), stomach1, true, gameObject);
-        stomach2 = new BodyPart(new Vector2(-4, 100), new Vector2(Constants.Length * 1.5f, Constants.Length * 2.5f), 0.4f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
+        stomach2 = new BodyPart("Stomach 2", new Vector2(-4, 100), new Vector2(Constants.Length * 1.5f, Constants.Length * 2.5f), 0.4f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/mid tors.png"), stomach2, true, gameObject);
-        stomach3 = new BodyPart(new Vector2(-4, 110), new Vector2(Constants.Length * 2, Constants.Length * 3.5f), 0.3f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
+        stomach3 = new BodyPart("Stomach 3", new Vector2(-4, 110), new Vector2(Constants.Length * 2, Constants.Length * 3.5f), 0.3f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/upper tors.png"), stomach3, true, gameObject);
 
-        neck = new BodyPart(new Vector2(-4, 120), new Vector2(Constants.Length, Constants.Length * 2.5f), 0.3f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
+        neck = new BodyPart("Neck", new Vector2(-4, 120), new Vector2(Constants.Length, Constants.Length * 2.5f), 0.3f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/neck.png"), neck, true, gameObject);
-        head = new BodyPart(new Vector2(-4, 130), new Vector2(Constants.Length * 3f, Constants.Length * 3.5f), 0.3f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
+        head = new BodyPart("Head", new Vector2(-4, 130), new Vector2(Constants.Length * 3f, Constants.Length * 3.5f), 0.3f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/head.png"), head, true, gameObject);
 
-        frontFoot = new BodyPart(new Vector2(0, 50), new Vector2(Constants.Length + Constants.Length, Constants.Length), .5f, Constants.Bit_PlayerFront, Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_Tools, unBox);
+        frontFoot = new BodyPart("Front Foot", new Vector2(0, 50), new Vector2(Constants.Length + Constants.Length, Constants.Length), .5f, Constants.Bit_PlayerFront, Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_Tools, unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/feet.png"), frontFoot, true, gameObject);
-        frontToes = new BodyPart(new Vector2(8, 50), new Vector2(Constants.Length + Constants.Length / 2, Constants.Length), 0.5f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_Tools), unBox);
+        frontToes = new BodyPart("Front Toes", new Vector2(8, 50), new Vector2(Constants.Length + Constants.Length / 2, Constants.Length), 0.5f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/toes.png"), frontToes, true, gameObject);
-        frontLowerLeg = new BodyPart(new Vector2(-4, 63), new Vector2(Constants.Length, Constants.Length * 4f), 0.8f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_Tools), unBox);
+        frontLowerLeg = new BodyPart("Front Lower Leg", new Vector2(-4, 63), new Vector2(Constants.Length, Constants.Length * 4f), 0.8f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/lower legs.png"), frontLowerLeg, true, gameObject);
-        frontUpperLeg = new BodyPart(new Vector2(-4, 80), new Vector2(Constants.Length, Constants.Length * 5f), 0.7f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_Tools), unBox);
+        frontUpperLeg = new BodyPart("Front Upper Leg", new Vector2(-4, 80), new Vector2(Constants.Length, Constants.Length * 5f), 0.7f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/upper legs.png"), frontUpperLeg, true, gameObject);
 
-        frontArm = new BodyPart(new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
+        frontArm = new BodyPart("Front Arm", new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/up arm.png"), frontArm, true, gameObject);
-        frontHand = new BodyPart(new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
+        frontHand = new BodyPart("Front Hand", new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/low arm.png"), frontHand, true, gameObject);
-        frontFingers = new BodyPart(new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
+        frontFingers = new BodyPart("Front Fingers", new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/hand.png"), frontFingers, false, gameObject);
 
         new CreateBodyJointsBehaviour(this, gameObject);
