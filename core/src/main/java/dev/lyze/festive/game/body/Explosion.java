@@ -3,9 +3,7 @@ package dev.lyze.festive.game.body;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Array;
 import dev.lyze.festive.ViewportBehaviour;
-import dev.lyze.gdxUnBox2d.Box2dPhysicsWorld;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
 
@@ -15,7 +13,6 @@ public class Explosion extends BehaviourAdapter {
 
     private boolean clicked;
     private ViewportBehaviour viewport;
-    private Box2dPhysicsWorld physicsWorld;
 
     public Explosion(Player player, GameObject gameObject) {
         super(gameObject);
@@ -34,7 +31,6 @@ public class Explosion extends BehaviourAdapter {
     @Override
     public void start() {
         viewport = getUnBox().findBehaviours(ViewportBehaviour.class).get(0);
-        physicsWorld = ((Box2dPhysicsWorld) getUnBox().getPhysicsWorld());
     }
 
     @Override

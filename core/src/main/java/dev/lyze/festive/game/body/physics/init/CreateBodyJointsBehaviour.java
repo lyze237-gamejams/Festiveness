@@ -18,7 +18,7 @@ public class CreateBodyJointsBehaviour extends BehaviourAdapter {
 
     @Override
     public void awake() {
-        var world = (World) getUnBox().getPhysicsWorld().getWorld();
+        var world = (World) getUnBox().getWorld();
 
         RevoluteJointDef rdef = new RevoluteJointDef();
         rdef.bodyA = player.getFrontFoot().getBody();

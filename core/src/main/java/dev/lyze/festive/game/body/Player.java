@@ -7,7 +7,6 @@ import dev.lyze.festive.game.body.physics.BalancerBehaviour;
 import dev.lyze.festive.game.body.physics.init.BodyPart;
 import dev.lyze.festive.game.body.physics.init.CreateBodyJointsBehaviour;
 import dev.lyze.festive.game.body.renderer.BodyPartRendererBehaviour;
-import dev.lyze.gdxUnBox2d.Box2dPhysicsWorld;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.UnBox;
 import lombok.Getter;
@@ -26,14 +25,14 @@ public class Player {
 
     private BalancerBehaviour balancer;
 
-    public Player(UnBox<Box2dPhysicsWorld> unBox) {
+    public Player(UnBox unBox) {
         gameObject = new GameObject(unBox);
 
         setupPhysicsBodyParts(unBox);
         balancer = new BalancerBehaviour(this, gameObject);
     }
 
-    private void setupPhysicsBodyParts(UnBox<Box2dPhysicsWorld> unBox) {
+    private void setupPhysicsBodyParts(UnBox unBox) {
         backFoot = new BodyPart(new Vector2(0, 50), new Vector2(Constants.Length + Constants.Length, Constants.Length), .5f, Constants.Bit_PlayerBack, Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerBack | Constants.Bit_Tools, unBox);
         new BodyPartRendererBehaviour(Gdx.files.internal("Morgi/feet.png"), backFoot, false, gameObject);
         backToes = new BodyPart(new Vector2(8, 50), new Vector2(Constants.Length + Constants.Length / 2, Constants.Length), 0.5f, Constants.Bit_PlayerBack, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);

@@ -15,12 +15,11 @@ import dev.lyze.festive.ViewportBehaviour;
 import dev.lyze.festive.game.body.Explosion;
 import dev.lyze.festive.game.body.Player;
 import dev.lyze.festive.game.tool.Tool;
-import dev.lyze.gdxUnBox2d.Box2dPhysicsWorld;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.UnBox;
 
 public class TestScreen extends ScreenAdapter {
-    private final UnBox<Box2dPhysicsWorld> unbox = new UnBox<>(new Box2dPhysicsWorld(new World(new Vector2(0, -10), true)));
+    private final UnBox unbox = new UnBox(new World(new Vector2(0, -10), true));
     private final Box2DDebugRenderer box2DDebugRenderer = new Box2DDebugRenderer();
     private final ExtendViewport viewport = new ExtendViewport(19, 8);
     private final SpriteBatch batch = new SpriteBatch();
@@ -55,7 +54,7 @@ public class TestScreen extends ScreenAdapter {
         batch.end();
 
         renderer.setProjectionMatrix(viewport.getCamera().combined);
-        box2DDebugRenderer.render(unbox.getPhysicsWorld().getWorld(), viewport.getCamera().combined);
+        box2DDebugRenderer.render(unbox.getWorld(), viewport.getCamera().combined);
         renderer.begin(ShapeRenderer.ShapeType.Line);
         unbox.debugRender(renderer);
         renderer.end();

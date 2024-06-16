@@ -4,17 +4,16 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import dev.lyze.festive.Constants;
 import dev.lyze.gdxUnBox2d.BodyDefType;
-import dev.lyze.gdxUnBox2d.Box2dPhysicsWorld;
+import dev.lyze.gdxUnBox2d.Box2dBehaviour;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.UnBox;
-import dev.lyze.gdxUnBox2d.behaviours.Box2dBehaviour;
 import dev.lyze.gdxUnBox2d.behaviours.fixtures.CreateBoxFixtureBehaviour;
 
 public class Ground {
     private GameObject gameObject;
     private Box2dBehaviour physicsBehaviour;
 
-    public Ground(UnBox<Box2dPhysicsWorld> unBox) {
+    public Ground(UnBox unBox) {
         gameObject = new GameObject(unBox);
         physicsBehaviour = new Box2dBehaviour(BodyDefType.StaticBody, gameObject);
 
