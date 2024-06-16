@@ -18,7 +18,6 @@ public class Explosion extends BehaviourAdapter {
     private final Vector2 input = new Vector2();
     private final Player player;
 
-    private boolean clicked;
     private ViewportBehaviour viewport;
 
     public Explosion(Player player, GameObject gameObject) {
@@ -32,7 +31,9 @@ public class Explosion extends BehaviourAdapter {
             return;
 
         input.set(Gdx.input.getX(), Gdx.input.getY());
-        clicked = true;
+        viewport.getViewport().unproject(input);
+
+        createExplosion(50);
     }
 
     @Override
@@ -40,25 +41,14 @@ public class Explosion extends BehaviourAdapter {
         viewport = getUnBox().findBehaviours(ViewportBehaviour.class).get(0);
     }
 
-    @Override
-    public void fixedUpdate() {
-        if (!clicked)
-            return;
-
-        clicked = false;
-        viewport.getViewport().unproject(input);
-
-        createExplosion();
-    }
-
-    private void createExplosion() {
-        for (int i = 0; i < 25; i++) {
+    private void createExplosion(int totalBalls) {
+        for (int i = 0; i < totalBalls; i++) {
             var ball = new GameObject(getUnBox());
 
             var bodyDef = new BodyDef();
             bodyDef.type = BodyDef.BodyType.DynamicBody;
             bodyDef.position.set(input);
-            bodyDef.linearVelocity.set(new Vector2(10,0).rotateDeg(MathUtils.random(360)));
+            bodyDef.linearVelocity.set(new Vector2(10,0).rotateDeg(360f / totalBalls * i));
 
             new Box2dBehaviour(bodyDef, ball);
             var fixtureDef = new FixtureDef();

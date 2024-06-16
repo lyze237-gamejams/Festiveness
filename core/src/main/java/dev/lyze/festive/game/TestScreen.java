@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import dev.lyze.festive.CameraBehaviour;
 import dev.lyze.festive.ViewportBehaviour;
 import dev.lyze.festive.game.body.Explosion;
 import dev.lyze.festive.game.body.Player;
@@ -33,6 +34,7 @@ public class TestScreen extends ScreenAdapter {
         new Tool(player, unbox);
         new Explosion(player, new GameObject(unbox));
         new ViewportBehaviour(viewport, new GameObject(unbox));
+        new CameraBehaviour(viewport, player, new GameObject(unbox));
     }
 
     @Override

@@ -8,6 +8,7 @@ dependencies {
   api "com.github.lyze237:gdx-UnBox2D:$unbox2dVersion"
   api "com.kotcrab.vis:vis-ui:$visUiVersion"
   api "space.earlygrey:shapedrawer:$shapeDrawerVersion"
+  api "com.github.MarcinSc.gdx-gemp-lib:gdx-gemp-camera2d:$gdxGempLibVersion"
   annotationProcessor "org.projectlombok:lombok:$lombokVersion"
   compileOnly "org.projectlombok:lombok:$lombokVersion"
 }

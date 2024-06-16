@@ -10,6 +10,7 @@
   <inherits name="dev.lyze.festive.Main" />
   <inherits name="dev.lyze.gdxUnBox2d" />
   <inherits name="space.earlygrey.shapedrawer" />
+  <inherits name="com.gempukku.libgdx.lib"/>
   <entry-point class="dev.lyze.festive.gwt.GwtLauncher" />
   <set-configuration-property name="gdx.assetpath" value="../assets" />
   <set-configuration-property name="xsiframe.failIfScriptTag" value="FALSE"/>
