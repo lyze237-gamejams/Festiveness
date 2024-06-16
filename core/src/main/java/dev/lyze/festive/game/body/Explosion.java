@@ -47,8 +47,9 @@ public class Explosion extends BehaviourAdapter {
 
             var bodyDef = new BodyDef();
             bodyDef.type = BodyDef.BodyType.DynamicBody;
+            bodyDef.bullet = true;
             bodyDef.position.set(input);
-            bodyDef.linearVelocity.set(new Vector2(10,0).rotateDeg(360f / totalBalls * i));
+            bodyDef.linearVelocity.set(new Vector2(50,0).rotateDeg(360f / totalBalls * i));
 
             new Box2dBehaviour(bodyDef, ball);
             var fixtureDef = new FixtureDef();

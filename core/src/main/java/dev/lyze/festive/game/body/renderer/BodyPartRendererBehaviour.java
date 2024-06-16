@@ -16,11 +16,11 @@ public class BodyPartRendererBehaviour extends BehaviourAdapter {
     private final Sprite sprite;
     private final boolean isFront;
 
-    public BodyPartRendererBehaviour(FileHandle file, BodyPart bodyPart, boolean isFront, GameObject gameObject) {
+    public BodyPartRendererBehaviour(Texture texture, BodyPart bodyPart, boolean isFront, GameObject gameObject) {
         super(gameObject);
 
         this.bodyPart = bodyPart;
-        this.sprite = new Sprite(new Texture(file));
+        this.sprite = new Sprite(texture);
         this.isFront = isFront;
     }
 

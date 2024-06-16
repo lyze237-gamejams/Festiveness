@@ -24,7 +24,8 @@ public class Ground {
         fixtureDef.filter.categoryBits = Constants.Bit_Ground;
         fixtureDef.filter.maskBits = (short) (Constants.Bit_Enemies | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools);
 
-        new CreateBoxFixtureBehaviour(5000 / Constants.PPM, 5 / Constants.PPM, new Vector2(0, -2), fixtureDef, gameObject);
+        var hx = 160;
+        new CreateBoxFixtureBehaviour(hx, 0.1f, new Vector2(hx, 2), fixtureDef, gameObject);
     }
 }
 

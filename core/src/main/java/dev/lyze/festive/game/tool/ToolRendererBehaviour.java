@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
+import dev.lyze.festive.game.Assets;
 import dev.lyze.festive.game.body.Player;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
@@ -20,7 +21,7 @@ public class ToolRendererBehaviour extends BehaviourAdapter {
 
         this.tool = tool;
         this.player = player;
-        this.sprite = new Sprite(new Texture(Gdx.files.internal("booper.png")));
+        this.sprite = new Sprite(Assets.getBooper());
     }
 
     @Override

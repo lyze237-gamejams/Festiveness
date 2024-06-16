@@ -13,12 +13,12 @@ public class BodyPart {
     private final Box2dBehaviour physicsBehaviour;
     private final CreateBodyPartFixtureBehaviour bodyPartBehaviour;
 
-    public BodyPart(String name, Vector2 initPos, Vector2 dim, float density, int cbit, int mbit, UnBox unBox) {
+    public BodyPart(String name, Vector2 playerPos, Vector2 partPosOffset, Vector2 dim, float density, int cbit, int mbit, UnBox unBox) {
         gameObject = new GameObject(name, unBox);
 
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(initPos.x / Constants.PPM, initPos.y / Constants.PPM);
+        bodyDef.position.set(playerPos.x + partPosOffset.x / Constants.PPM, playerPos.y + partPosOffset.y / Constants.PPM);
         physicsBehaviour = new Box2dBehaviour(bodyDef, gameObject);
 
         bodyPartBehaviour = new CreateBodyPartFixtureBehaviour(dim, density, (short) cbit, (short) mbit, gameObject);
