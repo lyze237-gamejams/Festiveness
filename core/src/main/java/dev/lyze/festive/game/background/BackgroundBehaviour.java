@@ -1,11 +1,9 @@
 package dev.lyze.festive.game.background;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import dev.lyze.festive.Constants;
-import dev.lyze.festive.game.Assets;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
 import lombok.AllArgsConstructor;
@@ -22,10 +20,10 @@ public class BackgroundBehaviour extends BehaviourAdapter {
 
         this.viewport = viewport;
 
-        // backgrounds.add(new Background(0, 0, Assets.getStartIsland(), Assets.getRandomWaterTile()));
-        for (int i = 0; i < 3; i++) {
+        new IslandBackgroundBehaviour(0, 0, viewport, Constants.assets.getStartIsland(), new GameObject("Start Island", getUnBox()));
+        for (int i = 0; i < 3; i++)
             backgrounds.add(new Background(i, 0, null, Constants.assets.getRandomWaterTile()));
-        }
+        new IslandBackgroundBehaviour(10, 0, viewport, Constants.assets.getEndIsland(), new GameObject("End Island", getUnBox()));
     }
 
     @Override
