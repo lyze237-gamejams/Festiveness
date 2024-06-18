@@ -18,7 +18,7 @@ public class BodyPart {
 
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(playerPos.x + partPosOffset.x / Constants.PPM, playerPos.y + partPosOffset.y / Constants.PPM);
+        bodyDef.position.set(playerPos.x + partPosOffset.x / Constants.BodyPartPpm, playerPos.y + partPosOffset.y / Constants.BodyPartPpm);
         physicsBehaviour = new Box2dBehaviour(bodyDef, gameObject);
 
         bodyPartBehaviour = new CreateBodyPartFixtureBehaviour(dim, density, (short) cbit, (short) mbit, gameObject);

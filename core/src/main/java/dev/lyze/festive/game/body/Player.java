@@ -37,48 +37,48 @@ public class Player {
         var spawnPosition = new Vector2(2.68f, 1.6f);
 
         backFoot = new BodyPart("Back Foot", spawnPosition, new Vector2(0, 50), new Vector2(Constants.Length + Constants.Length, Constants.Length), .5f, Constants.Bit_PlayerBack, Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerBack | Constants.Bit_Tools, unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiFeet(), backFoot, false, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiFeet(), backFoot, false, gameObject);
         backToes = new BodyPart("Back Toes", spawnPosition, new Vector2(8, 50), new Vector2(Constants.Length + Constants.Length / 2, Constants.Length), 0.5f, Constants.Bit_PlayerBack, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiToes(), backToes, false, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiToes(), backToes, false, gameObject);
         backLowerLeg = new BodyPart("Back Lower Leg", spawnPosition, new Vector2(-4, 63), new Vector2(Constants.Length, Constants.Length * 4f), 0.8f, Constants.Bit_PlayerBack, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiLowerLegs(), backLowerLeg, false, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiLowerLegs(), backLowerLeg, false, gameObject);
         backUpperLeg = new BodyPart("Back Upper Leg", spawnPosition, new Vector2(-4, 80), new Vector2(Constants.Length, Constants.Length * 5f), 0.7f, Constants.Bit_PlayerBack, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiUpperLegs(), backUpperLeg, false, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiUpperLegs(), backUpperLeg, false, gameObject);
 
         backArm = new BodyPart("Back Arm", spawnPosition, new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerBack, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiUpperArm(), backArm, false, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiUpperArm(), backArm, false, gameObject);
         backHand = new BodyPart("Back Hand", spawnPosition, new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiLowerArm(), backHand, false, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiLowerArm(), backHand, false, gameObject);
         backFingers = new BodyPart("Back Fingers", spawnPosition, new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiHand(), backFingers, false, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiHand(), backFingers, false, gameObject);
 
         stomach1 = new BodyPart("Stomach 1", spawnPosition, new Vector2(-4, 90), new Vector2(Constants.Length * 1.5f, Constants.Length * 2.5f), 0.5f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiLowerTorso(), stomach1, true, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiLowerTorso(), stomach1, true, gameObject);
         stomach2 = new BodyPart("Stomach 2", spawnPosition, new Vector2(-4, 100), new Vector2(Constants.Length * 1.5f, Constants.Length * 2.5f), 0.4f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiMiddleTorso(), stomach2, true, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiMiddleTorso(), stomach2, true, gameObject);
         stomach3 = new BodyPart("Stomach 3", spawnPosition, new Vector2(-4, 110), new Vector2(Constants.Length * 2, Constants.Length * 3.5f), 0.3f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiUpperTorso(), stomach3, true, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiUpperTorso(), stomach3, true, gameObject);
 
         neck = new BodyPart("Neck", spawnPosition, new Vector2(-4, 120), new Vector2(Constants.Length, Constants.Length * 2.5f), 0.3f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiNeck(), neck, true, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiNeck(), neck, true, gameObject);
         head = new BodyPart("Head", spawnPosition, new Vector2(-4, 130), new Vector2(Constants.Length * 3f, Constants.Length * 3.5f), 0.3f, (Constants.Bit_PlayerFront | Constants.Bit_PlayerBack), (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiHead(), head, true, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiHead(), head, true, gameObject);
 
         frontFoot = new BodyPart("Front Foot", spawnPosition, new Vector2(0, 50), new Vector2(Constants.Length + Constants.Length, Constants.Length), .5f, Constants.Bit_PlayerFront, Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_Tools, unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiFeet(), frontFoot, true, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiFeet(), frontFoot, true, gameObject);
         frontToes = new BodyPart("Front Toes", spawnPosition, new Vector2(8, 50), new Vector2(Constants.Length + Constants.Length / 2, Constants.Length), 0.5f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiToes(), frontToes, true, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiToes(), frontToes, true, gameObject);
         frontLowerLeg = new BodyPart("Front Lower Leg", spawnPosition, new Vector2(-4, 63), new Vector2(Constants.Length, Constants.Length * 4f), 0.8f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiLowerLegs(), frontLowerLeg, true, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiLowerLegs(), frontLowerLeg, true, gameObject);
         frontUpperLeg = new BodyPart("Front Upper Leg", spawnPosition, new Vector2(-4, 80), new Vector2(Constants.Length, Constants.Length * 5f), 0.7f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_PlayerFront | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiUpperLegs(), frontUpperLeg, true, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiUpperLegs(), frontUpperLeg, true, gameObject);
 
         frontArm = new BodyPart("Front Arm", spawnPosition, new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiUpperArm(), frontArm, true, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiUpperArm(), frontArm, true, gameObject);
         frontHand = new BodyPart("Front Hand", spawnPosition, new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiLowerArm(), frontHand, true, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiLowerArm(), frontHand, true, gameObject);
         frontFingers = new BodyPart("Front Fingers", spawnPosition, new Vector2(-4, 100), new Vector2(Constants.Length, Constants.Length * 3.5f), 0.2f, Constants.Bit_PlayerFront, (Constants.Bit_Enemies | Constants.Bit_Ground | Constants.Bit_Tools), unBox);
-        new BodyPartRendererBehaviour(Assets.getMorgiHand(), frontFingers, false, gameObject);
+        new BodyPartRendererBehaviour(Constants.assets.getMorgiHand(), frontFingers, false, gameObject);
 
         new CreateBodyJointsBehaviour(this, gameObject);
     }

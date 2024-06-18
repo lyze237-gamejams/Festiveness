@@ -11,7 +11,7 @@ buildscript {
   dependencies {
     classpath "io.freefair.gradle:lombok-plugin:8.3"
     classpath "org.docstr:gwt-gradle-plugin:$gwtPluginVersion"
-
+    classpath "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
   }
 }
 
@@ -28,6 +28,13 @@ allprojects {
   }
 }
 
+import com.badlogic.gdx.tools.texturepacker.TexturePacker
+task texturePacker {
+  doLast {
+    TexturePacker.processIfModified("${project.rootDir}/assetsources", "${project.rootDir}/assets/atlases", "main")
+  }
+}
+
 configure(subprojects) {
   apply plugin: 'java-library'
   apply plugin: 'io.freefair.lombok'
@@ -35,6 +42,9 @@ configure(subprojects) {
   compileJava {
     options.incremental = true
   }
+
+  compileJava.dependsOn texturePacker
+
   // From https://lyze.dev/2021/04/29/libGDX-Internal-Assets-List/
   // The article can be helpful when using assets.txt in your project.
   compileJava.doLast {

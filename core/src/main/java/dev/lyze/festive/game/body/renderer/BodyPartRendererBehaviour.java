@@ -5,8 +5,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
+import dev.lyze.festive.Constants;
 import dev.lyze.festive.game.body.physics.init.BodyPart;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
@@ -16,7 +18,7 @@ public class BodyPartRendererBehaviour extends BehaviourAdapter {
     private final Sprite sprite;
     private final boolean isFront;
 
-    public BodyPartRendererBehaviour(Texture texture, BodyPart bodyPart, boolean isFront, GameObject gameObject) {
+    public BodyPartRendererBehaviour(TextureAtlas.AtlasRegion texture, BodyPart bodyPart, boolean isFront, GameObject gameObject) {
         super(gameObject);
 
         this.bodyPart = bodyPart;
@@ -30,7 +32,7 @@ public class BodyPartRendererBehaviour extends BehaviourAdapter {
 
         sprite.setColor(isFront ? 1f : 0.8f, isFront ? 1f : 0.8f, isFront ? 1f : 0.8f, 1f);
         sprite.setOriginCenter();
-        sprite.setScale(0.0007f);
+        sprite.setScale(Constants.GraphicsPpm);
         sprite.setOriginBasedPosition(body.getPosition().x, body.getPosition().y);
         sprite.setRotation(body.getAngle() * MathUtils.radDeg);
     }

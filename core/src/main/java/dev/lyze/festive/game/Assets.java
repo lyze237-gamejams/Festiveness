@@ -1,36 +1,63 @@
 package dev.lyze.festive.game;
 
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.Array;
 import lombok.Getter;
-import lombok.experimental.UtilityClass;
 
-@UtilityClass
 public class Assets {
-    @Getter private static final Texture[] waterTiles = new Texture[] { new Texture("Tiles/Water/Water1.png"), new Texture("Tiles/Water/Water2.png"), new Texture("Tiles/Water/Water3.png") };
-    @Getter private static final Texture startIsland = new Texture("Tiles/Start.png");
-    @Getter private static final Texture endIsland = new Texture("Tiles/End.png");
-    @Getter private static final Texture[] clouds = new Texture[] { new Texture("Tiles/Clouds/Cloud1.png"), new Texture("Tiles/Clouds/Cloud2.png"), new Texture("Tiles/Clouds/Cloud3.png") };
+    @Getter private final TextureAtlas mainAtlas = new TextureAtlas("atlases/main.atlas");
 
-    @Getter private static final Texture booper = new Texture("booper.png");
+    @Getter private final Array<TextureAtlas.AtlasRegion> waterTiles;
+    @Getter private final TextureAtlas.AtlasRegion startIsland ;
+    @Getter private final TextureAtlas.AtlasRegion endIsland;
+    @Getter private final Array<TextureAtlas.AtlasRegion> clouds;
 
-    @Getter private static final Texture morgiToes = new Texture("Morgi/toes.png");
-    @Getter private static final Texture morgiFeet = new Texture("Morgi/feet.png");
-    @Getter private static final Texture morgiLowerLegs = new Texture("Morgi/lower legs.png");
-    @Getter private static final Texture morgiUpperLegs = new Texture("Morgi/upper legs.png");
+    @Getter private final TextureAtlas.AtlasRegion booper;
 
-    @Getter private static final Texture morgiLowerTorso = new Texture("Morgi/low tors.png");
-    @Getter private static final Texture morgiMiddleTorso = new Texture("Morgi/mid tors.png");
-    @Getter private static final Texture morgiUpperTorso = new Texture("Morgi/upper tors.png");
+    @Getter private final TextureAtlas.AtlasRegion morgiToes;
+    @Getter private final TextureAtlas.AtlasRegion morgiFeet;
+    @Getter private final TextureAtlas.AtlasRegion morgiLowerLegs;
+    @Getter private final TextureAtlas.AtlasRegion morgiUpperLegs;
 
-    @Getter private static final Texture morgiUpperArm = new Texture("Morgi/up arm.png");
-    @Getter private static final Texture morgiLowerArm = new Texture("Morgi/low arm.png");
-    @Getter private static final Texture morgiHand = new Texture("Morgi/hand.png");
+    @Getter private final TextureAtlas.AtlasRegion morgiLowerTorso;
+    @Getter private final TextureAtlas.AtlasRegion morgiMiddleTorso;
+    @Getter private final TextureAtlas.AtlasRegion morgiUpperTorso;
 
-    @Getter private static final Texture morgiNeck = new Texture("Morgi/neck.png");
-    @Getter private static final Texture morgiHead = new Texture("Morgi/head.png");
+    @Getter private final TextureAtlas.AtlasRegion morgiUpperArm;
+    @Getter private final TextureAtlas.AtlasRegion morgiLowerArm;
+    @Getter private final TextureAtlas.AtlasRegion morgiHand;
 
-    public static Texture getRandomWaterTile() {
-        return Assets.getWaterTiles()[MathUtils.random(Assets.getWaterTiles().length - 1)];
+    @Getter private final TextureAtlas.AtlasRegion morgiNeck;
+    @Getter private final TextureAtlas.AtlasRegion morgiHead;
+
+    public Assets() {
+        waterTiles = mainAtlas.findRegions("Tiles/Water/Water");
+        startIsland = mainAtlas.findRegion("Tiles/Start");
+        endIsland = mainAtlas.findRegion("Tiles/End");
+        clouds = mainAtlas.findRegions("Tiles/Clouds/Cloud");
+
+        booper = mainAtlas.findRegion("Booper");
+
+
+        morgiToes = mainAtlas.findRegion("Morgi/toes");
+        morgiFeet = mainAtlas.findRegion("Morgi/feet");
+        morgiLowerLegs = mainAtlas.findRegion("Morgi/lower legs");
+        morgiUpperLegs = mainAtlas.findRegion("Morgi/upper legs");
+
+        morgiLowerTorso = mainAtlas.findRegion("Morgi/low tors");
+        morgiMiddleTorso = mainAtlas.findRegion("Morgi/mid tors");
+        morgiUpperTorso = mainAtlas.findRegion("Morgi/upper tors");
+
+        morgiUpperArm = mainAtlas.findRegion("Morgi/up arm");
+        morgiLowerArm = mainAtlas.findRegion("Morgi/low arm");
+        morgiHand = mainAtlas.findRegion("Morgi/hand");
+
+        morgiNeck = mainAtlas.findRegion("Morgi/neck");
+        morgiHead = mainAtlas.findRegion("Morgi/head");
+    }
+
+    public TextureAtlas.AtlasRegion getRandomWaterTile() {
+        return getWaterTiles().get(MathUtils.random(getWaterTiles().size - 1));
     }
 }

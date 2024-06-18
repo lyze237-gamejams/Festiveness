@@ -24,25 +24,25 @@ public class BalancerBehaviour extends BehaviourAdapter {
         if (!enabled)
             return;
         if ((player.getFrontLowerLeg().getBody().getAngle() * (180 / Math.PI)) < -5) {
-            player.getFrontLowerLeg().getBody().applyForce(new Vector2(player.getFrontLowerLeg().getBody().getAngle() / (Constants.PPM / 3), 0), new Vector2(player.getFrontLowerLeg().getBody().getWorldCenter().x, player.getFrontLowerLeg().getBody().getWorldCenter().y + Constants.Length * 4), true);
+            player.getFrontLowerLeg().getBody().applyForce(new Vector2(player.getFrontLowerLeg().getBody().getAngle() / (Constants.BodyPartPpm / 3), 0), new Vector2(player.getFrontLowerLeg().getBody().getWorldCenter().x, player.getFrontLowerLeg().getBody().getWorldCenter().y + Constants.Length * 4), true);
         }
         if ((player.getFrontLowerLeg().getBody().getAngle() * (180 / Math.PI)) > -5) {
             if (player.getFrontLowerLeg().getBody().getAngle() * (180 / Math.PI) > 0)
-                player.getFrontLowerLeg().getBody().applyForce(new Vector2(player.getFrontLowerLeg().getBody().getAngle() / (Constants.PPM / 3), 0), new Vector2(player.getFrontLowerLeg().getBody().getWorldCenter().x, player.getFrontLowerLeg().getBody().getWorldCenter().y + Constants.Length * 4), true);
+                player.getFrontLowerLeg().getBody().applyForce(new Vector2(player.getFrontLowerLeg().getBody().getAngle() / (Constants.BodyPartPpm / 3), 0), new Vector2(player.getFrontLowerLeg().getBody().getWorldCenter().x, player.getFrontLowerLeg().getBody().getWorldCenter().y + Constants.Length * 4), true);
             else
-                player.getFrontLowerLeg().getBody().applyForce(new Vector2(-player.getFrontLowerLeg().getBody().getAngle() / (Constants.PPM / 3), 0), new Vector2(player.getFrontLowerLeg().getBody().getWorldCenter().x, player.getFrontLowerLeg().getBody().getWorldCenter().y + Constants.Length * 4), true);
+                player.getFrontLowerLeg().getBody().applyForce(new Vector2(-player.getFrontLowerLeg().getBody().getAngle() / (Constants.BodyPartPpm / 3), 0), new Vector2(player.getFrontLowerLeg().getBody().getWorldCenter().x, player.getFrontLowerLeg().getBody().getWorldCenter().y + Constants.Length * 4), true);
         }
 
         if ((player.getFrontUpperLeg().getBody().getAngle() * (180 / Math.PI)) < -5f) {
-            player.getFrontUpperLeg().getBody().applyForce(new Vector2(player.getFrontUpperLeg().getBody().getAngle() / (Constants.PPM / 5), 0), new Vector2(player.getFrontUpperLeg().getBody().getWorldCenter().x, player.getFrontUpperLeg().getBody().getWorldCenter().y + Constants.Length * 5), true);
+            player.getFrontUpperLeg().getBody().applyForce(new Vector2(player.getFrontUpperLeg().getBody().getAngle() / (Constants.BodyPartPpm / 5), 0), new Vector2(player.getFrontUpperLeg().getBody().getWorldCenter().x, player.getFrontUpperLeg().getBody().getWorldCenter().y + Constants.Length * 5), true);
         }
 
 
         if ((player.getFrontUpperLeg().getBody().getAngle() * (180 / Math.PI)) > -5) {
             if ((player.getFrontUpperLeg().getBody().getAngle() * (180 / Math.PI)) >= 0)
-                player.getFrontUpperLeg().getBody().applyForce(new Vector2(player.getFrontUpperLeg().getBody().getAngle() / (Constants.PPM / 5), 0), new Vector2(player.getFrontUpperLeg().getBody().getWorldCenter().x, player.getFrontUpperLeg().getBody().getWorldCenter().y + Constants.Length * 5), true);
+                player.getFrontUpperLeg().getBody().applyForce(new Vector2(player.getFrontUpperLeg().getBody().getAngle() / (Constants.BodyPartPpm / 5), 0), new Vector2(player.getFrontUpperLeg().getBody().getWorldCenter().x, player.getFrontUpperLeg().getBody().getWorldCenter().y + Constants.Length * 5), true);
             else
-                player.getFrontUpperLeg().getBody().applyForce(new Vector2(player.getFrontUpperLeg().getBody().getAngle() / (Constants.PPM / 5), 0), new Vector2(player.getFrontUpperLeg().getBody().getWorldCenter().x, player.getFrontUpperLeg().getBody().getWorldCenter().y + Constants.Length * 5), true);
+                player.getFrontUpperLeg().getBody().applyForce(new Vector2(player.getFrontUpperLeg().getBody().getAngle() / (Constants.BodyPartPpm / 5), 0), new Vector2(player.getFrontUpperLeg().getBody().getWorldCenter().x, player.getFrontUpperLeg().getBody().getWorldCenter().y + Constants.Length * 5), true);
         }
 
         /*if (AllVariables.Front_foot1.getAngle() * (180 / Math.PI) < 0) {
@@ -53,25 +53,25 @@ public class BalancerBehaviour extends BehaviourAdapter {
 
         //back---------------------------------
         if ((player.getBackLowerLeg().getBody().getAngle() * (180 / Math.PI)) < -5f) {
-            player.getBackLowerLeg().getBody().applyForce(new Vector2(player.getBackLowerLeg().getBody().getAngle() / (Constants.PPM / 3), 0), new Vector2(player.getBackLowerLeg().getBody().getWorldCenter().x, player.getBackLowerLeg().getBody().getWorldCenter().y + Constants.Length * 4), true);
+            player.getBackLowerLeg().getBody().applyForce(new Vector2(player.getBackLowerLeg().getBody().getAngle() / (Constants.BodyPartPpm / 3), 0), new Vector2(player.getBackLowerLeg().getBody().getWorldCenter().x, player.getBackLowerLeg().getBody().getWorldCenter().y + Constants.Length * 4), true);
         }
         if ((player.getBackLowerLeg().getBody().getAngle() * (180 / Math.PI)) > -5f) {
             if (player.getBackLowerLeg().getBody().getAngle() * (180 / Math.PI) > 0)
-                player.getBackLowerLeg().getBody().applyForce(new Vector2(player.getBackLowerLeg().getBody().getAngle() / (Constants.PPM / 3), 0), new Vector2(player.getBackLowerLeg().getBody().getWorldCenter().x, player.getBackLowerLeg().getBody().getWorldCenter().y + Constants.Length * 4), true);
+                player.getBackLowerLeg().getBody().applyForce(new Vector2(player.getBackLowerLeg().getBody().getAngle() / (Constants.BodyPartPpm / 3), 0), new Vector2(player.getBackLowerLeg().getBody().getWorldCenter().x, player.getBackLowerLeg().getBody().getWorldCenter().y + Constants.Length * 4), true);
             else
-                player.getBackLowerLeg().getBody().applyForce(new Vector2(-player.getBackLowerLeg().getBody().getAngle() / (Constants.PPM / 3), 0), new Vector2(player.getBackLowerLeg().getBody().getWorldCenter().x, player.getBackLowerLeg().getBody().getWorldCenter().y + Constants.Length * 4), true);
+                player.getBackLowerLeg().getBody().applyForce(new Vector2(-player.getBackLowerLeg().getBody().getAngle() / (Constants.BodyPartPpm / 3), 0), new Vector2(player.getBackLowerLeg().getBody().getWorldCenter().x, player.getBackLowerLeg().getBody().getWorldCenter().y + Constants.Length * 4), true);
 
         }
 
         if ((player.getBackUpperLeg().getBody().getAngle() * (180 / Math.PI)) <= -5) {
-            player.getBackUpperLeg().getBody().applyForce(new Vector2(player.getBackUpperLeg().getBody().getAngle() / (Constants.PPM / 5), 0), new Vector2(player.getBackUpperLeg().getBody().getWorldCenter().x, player.getBackUpperLeg().getBody().getWorldCenter().y + Constants.Length * 5), true);
+            player.getBackUpperLeg().getBody().applyForce(new Vector2(player.getBackUpperLeg().getBody().getAngle() / (Constants.BodyPartPpm / 5), 0), new Vector2(player.getBackUpperLeg().getBody().getWorldCenter().x, player.getBackUpperLeg().getBody().getWorldCenter().y + Constants.Length * 5), true);
         }
 
         if ((player.getBackUpperLeg().getBody().getAngle() * (180 / Math.PI)) > -5) {
             if ((player.getBackUpperLeg().getBody().getAngle() * (180 / Math.PI)) >= 0)
-                player.getBackUpperLeg().getBody().applyForce(new Vector2(player.getBackUpperLeg().getBody().getAngle() / (Constants.PPM / 5), 0), new Vector2(player.getBackUpperLeg().getBody().getWorldCenter().x, player.getBackUpperLeg().getBody().getWorldCenter().y + Constants.Length * 5), true);
+                player.getBackUpperLeg().getBody().applyForce(new Vector2(player.getBackUpperLeg().getBody().getAngle() / (Constants.BodyPartPpm / 5), 0), new Vector2(player.getBackUpperLeg().getBody().getWorldCenter().x, player.getBackUpperLeg().getBody().getWorldCenter().y + Constants.Length * 5), true);
             else
-                player.getBackUpperLeg().getBody().applyForce(new Vector2(player.getBackUpperLeg().getBody().getAngle() / (Constants.PPM / 5), 0), new Vector2(player.getBackUpperLeg().getBody().getWorldCenter().x, player.getBackUpperLeg().getBody().getWorldCenter().y + Constants.Length * 5), true);
+                player.getBackUpperLeg().getBody().applyForce(new Vector2(player.getBackUpperLeg().getBody().getAngle() / (Constants.BodyPartPpm / 5), 0), new Vector2(player.getBackUpperLeg().getBody().getWorldCenter().x, player.getBackUpperLeg().getBody().getWorldCenter().y + Constants.Length * 5), true);
 
         }
 
@@ -84,42 +84,42 @@ public class BalancerBehaviour extends BehaviourAdapter {
         //commom ---------------------------
 
         if ((player.getStomach1().getBody().getAngle() * (180 / Math.PI)) > 1f) {
-            player.getStomach1().getBody().applyForce(new Vector2(player.getStomach1().getBody().getAngle() / (Constants.PPM / 3), 0), new Vector2(player.getStomach1().getBody().getWorldCenter().x, player.getStomach1().getBody().getWorldCenter().y + Constants.Length * 5), true);
+            player.getStomach1().getBody().applyForce(new Vector2(player.getStomach1().getBody().getAngle() / (Constants.BodyPartPpm / 3), 0), new Vector2(player.getStomach1().getBody().getWorldCenter().x, player.getStomach1().getBody().getWorldCenter().y + Constants.Length * 5), true);
         }
         if ((player.getStomach1().getBody().getAngle() * (180 / Math.PI)) <= 1f) {
-            player.getStomach1().getBody().applyForce(new Vector2(player.getStomach1().getBody().getAngle() / (Constants.PPM / 3), 0), new Vector2(player.getStomach1().getBody().getWorldCenter().x, player.getStomach1().getBody().getWorldCenter().y + Constants.Length * 5), true);
+            player.getStomach1().getBody().applyForce(new Vector2(player.getStomach1().getBody().getAngle() / (Constants.BodyPartPpm / 3), 0), new Vector2(player.getStomach1().getBody().getWorldCenter().x, player.getStomach1().getBody().getWorldCenter().y + Constants.Length * 5), true);
         }
 
         if ((player.getStomach2().getBody().getAngle() * (180 / Math.PI)) <= -2f) {
-            player.getStomach2().getBody().applyForce(new Vector2(player.getStomach2().getBody().getAngle() / (Constants.PPM / 2), 0), new Vector2(player.getStomach2().getBody().getWorldCenter().x, player.getStomach2().getBody().getWorldCenter().y + Constants.Length * 5), true);
+            player.getStomach2().getBody().applyForce(new Vector2(player.getStomach2().getBody().getAngle() / (Constants.BodyPartPpm / 2), 0), new Vector2(player.getStomach2().getBody().getWorldCenter().x, player.getStomach2().getBody().getWorldCenter().y + Constants.Length * 5), true);
         }
 
         if ((player.getStomach2().getBody().getAngle() * (180 / Math.PI)) > -2) {
-            player.getStomach2().getBody().applyForce(new Vector2(player.getStomach2().getBody().getAngle() / (Constants.PPM / 2), 0), new Vector2(player.getStomach2().getBody().getWorldCenter().x, player.getStomach2().getBody().getWorldCenter().y + Constants.Length * 5), true);
+            player.getStomach2().getBody().applyForce(new Vector2(player.getStomach2().getBody().getAngle() / (Constants.BodyPartPpm / 2), 0), new Vector2(player.getStomach2().getBody().getWorldCenter().x, player.getStomach2().getBody().getWorldCenter().y + Constants.Length * 5), true);
         }
 
         if ((player.getStomach3().getBody().getAngle() * (180 / Math.PI)) <= -2f) {
-            player.getStomach3().getBody().applyForce(new Vector2(player.getStomach3().getBody().getAngle() / (Constants.PPM / 2), 0), new Vector2(player.getStomach3().getBody().getWorldCenter().x, player.getStomach3().getBody().getWorldCenter().y + Constants.Length * 5), true);
+            player.getStomach3().getBody().applyForce(new Vector2(player.getStomach3().getBody().getAngle() / (Constants.BodyPartPpm / 2), 0), new Vector2(player.getStomach3().getBody().getWorldCenter().x, player.getStomach3().getBody().getWorldCenter().y + Constants.Length * 5), true);
         }
 
         if ((player.getStomach3().getBody().getAngle() * (180 / Math.PI)) > -2) {
-            player.getStomach3().getBody().applyForce(new Vector2(player.getStomach3().getBody().getAngle() / (Constants.PPM / 2), 0), new Vector2(player.getStomach3().getBody().getWorldCenter().x, player.getStomach3().getBody().getWorldCenter().y + Constants.Length * 5), true);
+            player.getStomach3().getBody().applyForce(new Vector2(player.getStomach3().getBody().getAngle() / (Constants.BodyPartPpm / 2), 0), new Vector2(player.getStomach3().getBody().getWorldCenter().x, player.getStomach3().getBody().getWorldCenter().y + Constants.Length * 5), true);
         }
 
         if ((player.getNeck().getBody().getAngle() * (180 / Math.PI)) < -1f) {
-            player.getNeck().getBody().applyForce(new Vector2(player.getNeck().getBody().getAngle() / (Constants.PPM / 2), 0), new Vector2(player.getNeck().getBody().getWorldCenter().x, player.getNeck().getBody().getWorldCenter().y + Constants.Length * 5), true);
+            player.getNeck().getBody().applyForce(new Vector2(player.getNeck().getBody().getAngle() / (Constants.BodyPartPpm / 2), 0), new Vector2(player.getNeck().getBody().getWorldCenter().x, player.getNeck().getBody().getWorldCenter().y + Constants.Length * 5), true);
         }
 
         if ((player.getNeck().getBody().getAngle() * (180 / Math.PI)) > -1) {
-            player.getNeck().getBody().applyForce(new Vector2(player.getNeck().getBody().getAngle() / (Constants.PPM / 2), 0), new Vector2(player.getNeck().getBody().getWorldCenter().x, player.getNeck().getBody().getWorldCenter().y + Constants.Length * 5), true);
+            player.getNeck().getBody().applyForce(new Vector2(player.getNeck().getBody().getAngle() / (Constants.BodyPartPpm / 2), 0), new Vector2(player.getNeck().getBody().getWorldCenter().x, player.getNeck().getBody().getWorldCenter().y + Constants.Length * 5), true);
         }
 
         if ((player.getHead().getBody().getAngle() * (180 / Math.PI)) < -1f) {
-            player.getHead().getBody().applyForce(new Vector2(player.getHead().getBody().getAngle() / (Constants.PPM / 2), 0), new Vector2(player.getHead().getBody().getWorldCenter().x, player.getHead().getBody().getWorldCenter().y + Constants.Length * 5), true);
+            player.getHead().getBody().applyForce(new Vector2(player.getHead().getBody().getAngle() / (Constants.BodyPartPpm / 2), 0), new Vector2(player.getHead().getBody().getWorldCenter().x, player.getHead().getBody().getWorldCenter().y + Constants.Length * 5), true);
         }
 
         if ((player.getHead().getBody().getAngle() * (180 / Math.PI)) > -1) {
-            player.getHead().getBody().applyForce(new Vector2(player.getHead().getBody().getAngle() / (Constants.PPM / 2), 0), new Vector2(player.getHead().getBody().getWorldCenter().x, player.getHead().getBody().getWorldCenter().y + Constants.Length * 5), true);
+            player.getHead().getBody().applyForce(new Vector2(player.getHead().getBody().getAngle() / (Constants.BodyPartPpm / 2), 0), new Vector2(player.getHead().getBody().getWorldCenter().x, player.getHead().getBody().getWorldCenter().y + Constants.Length * 5), true);
         }
     }
 }

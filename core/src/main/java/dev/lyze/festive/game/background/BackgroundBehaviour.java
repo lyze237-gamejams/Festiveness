@@ -2,7 +2,9 @@ package dev.lyze.festive.game.background;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import dev.lyze.festive.Constants;
 import dev.lyze.festive.game.Assets;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
@@ -22,7 +24,7 @@ public class BackgroundBehaviour extends BehaviourAdapter {
 
         // backgrounds.add(new Background(0, 0, Assets.getStartIsland(), Assets.getRandomWaterTile()));
         for (int i = 0; i < 3; i++) {
-            backgrounds.add(new Background(i, 0, null, Assets.getRandomWaterTile()));
+            backgrounds.add(new Background(i, 0, null, Constants.assets.getRandomWaterTile()));
         }
     }
 
@@ -35,12 +37,12 @@ public class BackgroundBehaviour extends BehaviourAdapter {
 
         if (cameraPosition.x > mostRightX * viewport.getMinWorldWidth()) {
             backgrounds.removeFirst();
-            backgrounds.addLast(new Background(mostRightX + 1, 0, null, Assets.getRandomWaterTile()));
+            backgrounds.addLast(new Background(mostRightX + 1, 0, null, Constants.assets.getRandomWaterTile()));
         }
 
         if (cameraPosition.x - viewport.getWorldWidth() / 2f < mostLeftX * viewport.getMinWorldWidth()) {
             backgrounds.removeLast();
-            backgrounds.addFirst(new Background(mostLeftX - 1, 0, null, Assets.getRandomWaterTile()));
+            backgrounds.addFirst(new Background(mostLeftX - 1, 0, null, Constants.assets.getRandomWaterTile()));
         }
     }
 
@@ -54,8 +56,8 @@ public class BackgroundBehaviour extends BehaviourAdapter {
     @AllArgsConstructor
     private static class Background {
         private int x, y;
-        private Texture overlay;
-        private Texture texture;
+        private TextureAtlas.AtlasRegion overlay;
+        private TextureAtlas.AtlasRegion texture;
 
         public void draw(ExtendViewport viewport, Batch batch) {
             batch.draw(texture, x * viewport.getMinWorldWidth(), y * viewport.getMinWorldHeight(), viewport.getMinWorldWidth(), viewport.getMinWorldHeight());

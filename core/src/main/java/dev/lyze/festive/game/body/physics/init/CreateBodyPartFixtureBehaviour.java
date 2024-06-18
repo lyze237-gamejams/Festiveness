@@ -14,7 +14,7 @@ public class CreateBodyPartFixtureBehaviour extends CreateFixtureBehaviour {
         super(createFixture(density, cbit, mbit), gameObject);
 
         shape = new PolygonShape();
-        shape.setAsBox(dim.x / Constants.PPM, dim.y / Constants.PPM);
+        shape.setAsBox(dim.x / Constants.BodyPartPpm, dim.y / Constants.BodyPartPpm);
     }
 
     @Override

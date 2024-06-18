@@ -4,7 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
+import dev.lyze.festive.Constants;
 import dev.lyze.festive.game.Assets;
 import dev.lyze.festive.game.body.Player;
 import dev.lyze.gdxUnBox2d.GameObject;
@@ -14,14 +16,14 @@ public class ToolRendererBehaviour extends BehaviourAdapter {
 
     private final Tool tool;
     private final Player player;
-    private final Sprite sprite;
+    private final TextureAtlas.AtlasSprite sprite;
 
     public ToolRendererBehaviour(Tool tool, Player player, GameObject gameObject) {
         super(gameObject);
 
         this.tool = tool;
         this.player = player;
-        this.sprite = new Sprite(Assets.getBooper());
+        this.sprite = new TextureAtlas.AtlasSprite(Constants.assets.getBooper());
     }
 
     @Override
@@ -37,7 +39,7 @@ public class ToolRendererBehaviour extends BehaviourAdapter {
 
 
         sprite.setOriginCenter();
-        sprite.setScale(0.0007f);
+        sprite.setScale(Constants.GraphicsPpm);
         sprite.setOriginBasedPosition(body.getPosition().x, body.getPosition().y);
         sprite.setRotation(rotation);
     }

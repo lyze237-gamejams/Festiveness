@@ -19,7 +19,7 @@ public class Tool {
         gameObject = new GameObject(unBox);
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.KinematicBody;
-        bodyDef.position.set(new Vector2(60 / Constants.PPM, 150 / Constants.PPM));
+        bodyDef.position.set(new Vector2(60 / Constants.BodyPartPpm, 150 / Constants.BodyPartPpm));
         physicsBehaviour = new Box2dBehaviour(bodyDef, gameObject);
 
         FixtureDef fixtureDef = new FixtureDef();
@@ -29,7 +29,7 @@ public class Tool {
         fixtureDef.filter.categoryBits = Constants.Bit_Ground;
         fixtureDef.filter.maskBits = (short) (Constants.Bit_Enemies | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools);
 
-        new CreateBoxFixtureBehaviour(Constants.Length / Constants.PPM, Constants.Length / Constants.PPM, new Vector2(0, 0), fixtureDef, gameObject);
+        new CreateBoxFixtureBehaviour(Constants.Length / Constants.BodyPartPpm, Constants.Length / Constants.BodyPartPpm, new Vector2(0, 0), fixtureDef, gameObject);
         new ToolControlsBehaviour(this, gameObject);
         new ToolRendererBehaviour(this, player, gameObject);
     }
