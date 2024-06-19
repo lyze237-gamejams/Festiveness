@@ -1,6 +1,7 @@
 package dev.lyze.festive.game.body;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import dev.lyze.festive.Constants;
 import dev.lyze.festive.game.Assets;
@@ -103,7 +104,7 @@ public class Player {
 
             var velocity = body.getLinearVelocity();
             var length = velocity.len();
-            velocity.set(45, 45).nor().scl(length);
+            velocity.set(MathUtils.random(45, 55), MathUtils.random(45, 55)).nor().scl(length);
             body.setLinearVelocity(velocity);
         }
     }
