@@ -6,7 +6,6 @@
   <inherits name="com.badlogic.gdx.controllers" />
   <inherits name="com.badlogic.gdx.controllers.controllers-gwt" />
   <inherits name="com.badlogic.gdx.physics.box2d.box2d-gwt" />
-  <inherits name="com.kotcrab.vis.vis-ui" />
   <inherits name="dev.lyze.festive.Main" />
   <inherits name="dev.lyze.gdxUnBox2d" />
   <inherits name="space.earlygrey.shapedrawer" />

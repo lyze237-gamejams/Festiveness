@@ -24,9 +24,11 @@ jobs:
 
       - run: chmod +x butler && chmod +x gradlew
 
-      - run: ./gradlew lwjgl3:jar
-      - run: ./gradlew html:dist
+      - run: ./gradlew lwjgl3:jar html:dist lwjgl3:packageWinX64 lwjgl3:packageLinuxX64
 
-      - run: mv lwjgl3/build/libs/*.jar A-Rather-Festive-Birb.jar
+      - run: mv lwjgl3/build/lib/*.jar A-Rather-Festive-Birb.jar
+
       - run: ./butler push html/build/dist lyze237/a-rather-festive-birb:html
       - run: ./butler push A-Rather-Festive-Birb.jar lyze237/a-rather-festive-birb:jar
+      - run: ./butler push lwjgl3/build/construo/winX64 lyze237/a-rather-festive-birb:win
+      - run: ./butler push lwjgl3/build/construo/linuxX64 lyze237/a-rather-festive-birb:linux
