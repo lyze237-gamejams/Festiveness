@@ -7,7 +7,9 @@ import dev.lyze.festive.game.Assets;
 import dev.lyze.festive.game.body.physics.BalancerBehaviour;
 import dev.lyze.festive.game.body.physics.init.BodyPart;
 import dev.lyze.festive.game.body.physics.init.CreateBodyJointsBehaviour;
+import dev.lyze.festive.game.body.physics.init.CreateBodyPartFixtureBehaviour;
 import dev.lyze.festive.game.body.renderer.BodyPartRendererBehaviour;
+import dev.lyze.gdxUnBox2d.Box2dBehaviour;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.UnBox;
 import lombok.Getter;
@@ -16,6 +18,7 @@ import lombok.Getter;
 public class Player {
 
     private final GameObject gameObject;
+    private final UnBox unBox;
 
     private BodyPart frontFoot, frontToes, frontLowerLeg;
     private BodyPart backFoot, backToes, backLowerLeg;
@@ -27,6 +30,7 @@ public class Player {
     private BalancerBehaviour balancer;
 
     public Player(UnBox unBox) {
+        this.unBox = unBox;
         gameObject = new GameObject(unBox);
 
         setupPhysicsBodyParts(unBox);
@@ -81,5 +85,26 @@ public class Player {
         new BodyPartRendererBehaviour(Constants.assets.getMorgiHand(), frontFingers, false, gameObject);
 
         new CreateBodyJointsBehaviour(this, gameObject);
+    }
+
+    public void applySpeedBoost() {
+        for (CreateBodyPartFixtureBehaviour bodyPart : unBox.findBehaviours(CreateBodyPartFixtureBehaviour.class)) {
+            var box2dBehaviour = bodyPart.getGameObject().getBehaviour(Box2dBehaviour.class);
+            var body = box2dBehaviour.getBody();
+            System.out.println(box2dBehaviour.getGameObject() + ": " + body.getLinearVelocity());
+            body.setLinearVelocity(body.getLinearVelocity().scl(2));
+        }
+    }
+
+    public void applyJump() {
+        for (CreateBodyPartFixtureBehaviour bodyPart : unBox.findBehaviours(CreateBodyPartFixtureBehaviour.class)) {
+            var box2dBehaviour = bodyPart.getGameObject().getBehaviour(Box2dBehaviour.class);
+            var body = box2dBehaviour.getBody();
+
+            var velocity = body.getLinearVelocity();
+            var length = velocity.len();
+            velocity.set(45, 45).nor().scl(length);
+            body.setLinearVelocity(velocity);
+        }
     }
 }

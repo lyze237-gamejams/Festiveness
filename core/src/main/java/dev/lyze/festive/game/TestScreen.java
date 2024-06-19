@@ -53,6 +53,12 @@ public class TestScreen extends ScreenAdapter {
         if (Gdx.input.isKeyJustPressed(Input.Keys.R))
             ((Game) Gdx.app.getApplicationListener()).setScreen(new TestScreen());
 
+        if (Gdx.input.isKeyJustPressed(Input.Keys.B))
+            player.applySpeedBoost();
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.J))
+            player.applyJump();
+
         Gdx.gl.glLineWidth(4);
 
         unbox.preRender(delta);
