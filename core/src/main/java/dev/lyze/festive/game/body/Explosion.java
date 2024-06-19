@@ -2,12 +2,10 @@ package dev.lyze.festive.game.body;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import dev.lyze.festive.Constants;
-import dev.lyze.festive.ViewportBehaviour;
 import dev.lyze.festive.game.body.explosions.ExplosionBallBehaviour;
 import dev.lyze.gdxUnBox2d.Box2dBehaviour;
 import dev.lyze.gdxUnBox2d.GameObject;
@@ -17,8 +15,6 @@ import dev.lyze.gdxUnBox2d.behaviours.fixtures.CreateCircleFixtureBehaviour;
 public class Explosion extends BehaviourAdapter {
     private final Vector2 input = new Vector2();
     private final Player player;
-
-    private ViewportBehaviour viewport;
 
     public Explosion(Player player, GameObject gameObject) {
         super(gameObject);
@@ -31,14 +27,9 @@ public class Explosion extends BehaviourAdapter {
             return;
 
         input.set(Gdx.input.getX(), Gdx.input.getY());
-        viewport.getViewport().unproject(input);
+        Constants.viewport.unproject(input);
 
         createExplosion(50);
-    }
-
-    @Override
-    public void start() {
-        viewport = getUnBox().findBehaviours(ViewportBehaviour.class).get(0);
     }
 
     private void createExplosion(int totalBalls) {

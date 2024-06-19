@@ -18,10 +18,10 @@ public class CameraBehaviour extends BehaviourAdapter {
     private final UpdateCameraControl updater;
     private final Camera2DController controller;
 
-    public CameraBehaviour(Viewport viewport, Player player, GameObject gameObject) {
+    public CameraBehaviour(Player player, GameObject gameObject) {
         super(gameObject);
 
-        updater = new UpdateCameraControl(viewport.getCamera());
+        updater = new UpdateCameraControl(Constants.viewport.getCamera());
 
         var lockPos = 0.25f;
         var lockSize = 1 - (lockPos * 2);
