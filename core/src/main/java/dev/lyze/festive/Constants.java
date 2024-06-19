@@ -13,5 +13,7 @@ public class Constants {
     public static final short Bit_Enemies = 256;
     public static final short Bit_Tools = 512;
 
+    public static final int FinalIslandScreenNumber = 24;
+
     public static final Assets assets = new Assets();
 }

@@ -23,7 +23,7 @@ public class BackgroundBehaviour extends BehaviourAdapter {
         new IslandBackgroundBehaviour(0, 0, viewport, Constants.assets.getStartIsland(), new GameObject("Start Island", getUnBox()));
         for (int i = 0; i < 3; i++)
             backgrounds.add(new Background(i, 0, null, Constants.assets.getRandomWaterTile()));
-        new IslandBackgroundBehaviour(10, 0, viewport, Constants.assets.getEndIsland(), new GameObject("End Island", getUnBox()));
+        new IslandBackgroundBehaviour(Constants.FinalIslandScreenNumber, 0, viewport, Constants.assets.getEndIsland(), new GameObject("End Island", getUnBox()));
     }
 
     @Override

@@ -2,7 +2,9 @@ package dev.lyze.festive.game.background;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import dev.lyze.festive.Constants;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
 import lombok.Getter;
@@ -18,6 +20,18 @@ public class SkyBehaviour extends BehaviourAdapter {
         super(gameObject);
 
         this.viewport = viewport;
+    }
+
+    @Override
+    public void start() {
+        for (int x = 0; x < Constants.FinalIslandScreenNumber; x++) {
+            for (int i = 0; i < MathUtils.random(2, 20); i++) {
+                var cloudPosX = MathUtils.random(0, viewport.getMinWorldWidth());
+                var cloudPosY = MathUtils.random(viewport.getMinWorldHeight() * 2, viewport.getMinWorldHeight() * 10);
+
+                new CloudBackgroundBehaviour(x * viewport.getMinWorldWidth() + cloudPosX, cloudPosY, Constants.assets.getRandomCloudTile(), new GameObject("Cloud", getUnBox()));
+            }
+        }
     }
 
     @Override

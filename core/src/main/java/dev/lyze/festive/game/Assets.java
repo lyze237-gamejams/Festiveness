@@ -35,6 +35,7 @@ public class Assets {
         waterTiles = mainAtlas.findRegions("Tiles/Water/Water");
         startIsland = mainAtlas.findRegion("Tiles/Start");
         endIsland = mainAtlas.findRegion("Tiles/End");
+
         clouds = mainAtlas.findRegions("Tiles/Clouds/Cloud");
 
         booper = mainAtlas.findRegion("Booper");
@@ -59,5 +60,9 @@ public class Assets {
 
     public TextureAtlas.AtlasRegion getRandomWaterTile() {
         return getWaterTiles().get(MathUtils.random(getWaterTiles().size - 1));
+    }
+
+    public TextureAtlas.AtlasRegion getRandomCloudTile() {
+        return getClouds().get(MathUtils.random(getClouds().size - 1));
     }
 }
