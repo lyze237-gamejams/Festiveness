@@ -34,8 +34,8 @@ public class TestScreen extends ScreenAdapter {
 
     public TestScreen() {
         new BackgroundBehaviour(viewport, new GameObject(unbox));
-        new Ground(unbox);
         player = new Player(unbox);
+        new Ground(player, new GameObject("Ground", unbox));
         new Tool(player, unbox);
         new Explosion(player, new GameObject(unbox));
         new ViewportBehaviour(viewport, new GameObject(unbox));
