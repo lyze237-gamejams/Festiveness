@@ -11,8 +11,8 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.ScreenUtils;
 import dev.lyze.festive.CameraBehaviour;
 import dev.lyze.festive.Constants;
-import dev.lyze.festive.game.background.BackgroundBehaviour;
-import dev.lyze.festive.game.background.SkyBehaviour;
+import dev.lyze.festive.game.world.BackgroundBehaviour;
+import dev.lyze.festive.game.world.SkyBehaviour;
 import dev.lyze.festive.game.body.Explosion;
 import dev.lyze.festive.game.body.Player;
 import dev.lyze.festive.game.eventCheckers.OnFinalIslandSpawnEventChecker;
@@ -72,11 +72,11 @@ public class MainScreen extends ScreenAdapter {
         unbox.render(batch);
         batch.end();
 
-        renderer.setProjectionMatrix(Constants.viewport.getCamera().combined);
-        box2DDebugRenderer.render(unbox.getWorld(), Constants.viewport.getCamera().combined);
-        renderer.begin(ShapeRenderer.ShapeType.Line);
-        unbox.debugRender(renderer);
-        renderer.end();
+        //renderer.setProjectionMatrix(Constants.viewport.getCamera().combined);
+        //box2DDebugRenderer.render(unbox.getWorld(), Constants.viewport.getCamera().combined);
+        //renderer.begin(ShapeRenderer.ShapeType.Line);
+        //unbox.debugRender(renderer);
+        //renderer.end();
 
         unbox.postRender();
     }

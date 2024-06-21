@@ -1,8 +1,6 @@
-package dev.lyze.festive.game.background;
+package dev.lyze.festive.game.world;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import dev.lyze.festive.Constants;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;

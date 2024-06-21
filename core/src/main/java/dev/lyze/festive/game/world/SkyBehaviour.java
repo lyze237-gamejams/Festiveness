@@ -1,4 +1,4 @@
-package dev.lyze.festive.game.background;
+package dev.lyze.festive.game.world;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;

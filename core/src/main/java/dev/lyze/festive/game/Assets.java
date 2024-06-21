@@ -15,6 +15,10 @@ public class Assets {
 
     @Getter private final TextureAtlas.AtlasRegion booper;
 
+    @Getter private final TextureAtlas.AtlasRegion coin;
+    @Getter private final TextureAtlas.AtlasRegion booster;
+    @Getter private final TextureAtlas.AtlasRegion bomb;
+
     @Getter private final TextureAtlas.AtlasRegion morgiToes;
     @Getter private final TextureAtlas.AtlasRegion morgiFeet;
     @Getter private final TextureAtlas.AtlasRegion morgiLowerLegs;
@@ -39,6 +43,10 @@ public class Assets {
         clouds = mainAtlas.findRegions("Tiles/Clouds/Cloud");
 
         booper = mainAtlas.findRegion("Booper");
+
+        coin = mainAtlas.findRegion("Collectibles/Coin");
+        bomb = mainAtlas.findRegion("Collectibles/Bomb");
+        booster = mainAtlas.findRegion("Collectibles/Booster");
 
 
         morgiToes = mainAtlas.findRegion("Morgi/toes");

@@ -1,4 +1,4 @@
-package dev.lyze.festive.game.background;
+package dev.lyze.festive.game.world;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
