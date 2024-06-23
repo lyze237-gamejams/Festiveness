@@ -1,4 +1,4 @@
-package dev.lyze.festive.game.tool;
+package dev.lyze.festive.game.booper;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -10,12 +10,13 @@ import dev.lyze.gdxUnBox2d.Box2dBehaviour;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.UnBox;
 import dev.lyze.gdxUnBox2d.behaviours.fixtures.CreateBoxFixtureBehaviour;
+import lombok.Getter;
 
-public class Tool {
-    private final GameObject gameObject;
+public class Booper {
+    @Getter private final GameObject gameObject;
     private final Box2dBehaviour physicsBehaviour;
 
-    public Tool(Player player, UnBox unBox) {
+    public Booper(Player player, UnBox unBox) {
         gameObject = new GameObject(unBox);
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.KinematicBody;
@@ -30,8 +31,8 @@ public class Tool {
         fixtureDef.filter.maskBits = (short) (Constants.Bit_Enemies | Constants.Bit_PlayerFront | Constants.Bit_PlayerBack | Constants.Bit_Tools);
 
         new CreateBoxFixtureBehaviour(Constants.Length / Constants.BodyPartPpm, Constants.Length / Constants.BodyPartPpm, new Vector2(0, 0), fixtureDef, gameObject);
-        new ToolControlsBehaviour(this, gameObject);
-        new ToolRendererBehaviour(this, player, gameObject);
+        new BooperControlsBehaviour(this, gameObject);
+        new BooperRendererBehaviour(this, player, gameObject);
     }
 
     public Body getBody() {

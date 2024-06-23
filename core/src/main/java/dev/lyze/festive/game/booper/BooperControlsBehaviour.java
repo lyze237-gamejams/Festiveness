@@ -1,23 +1,22 @@
-package dev.lyze.festive.game.tool;
+package dev.lyze.festive.game.booper;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
-import dev.lyze.festive.game.body.Player;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
 
-public class ToolControlsBehaviour extends BehaviourAdapter {
+public class BooperControlsBehaviour extends BehaviourAdapter {
     private final Vector2 velocity = new Vector2();
 
-    private final Tool tool;
+    private final Booper booper;
 
     private boolean left, right, up, down;
 
 
-    public ToolControlsBehaviour(Tool tool, GameObject gameObject) {
+    public BooperControlsBehaviour(Booper booper, GameObject gameObject) {
         super(gameObject);
-        this.tool = tool;
+        this.booper = booper;
     }
 
     @Override
@@ -42,6 +41,6 @@ public class ToolControlsBehaviour extends BehaviourAdapter {
         if (down)
             velocity.y = -speed;
 
-        tool.getBody().setLinearVelocity(velocity.x, velocity.y);
+        booper.getBody().setLinearVelocity(velocity.x, velocity.y);
     }
 }

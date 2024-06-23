@@ -2,16 +2,13 @@ package dev.lyze.festive.game.world;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
 import dev.lyze.festive.Constants;
 import dev.lyze.festive.eventsystem.EventListener;
-import dev.lyze.festive.eventsystem.events.Event;
 import dev.lyze.festive.eventsystem.events.OnFinalIslandSpawnEvent;
 import dev.lyze.festive.eventsystem.events.OnTouchdownEvent;
 import dev.lyze.festive.game.body.Player;
 import dev.lyze.festive.game.body.physics.BalancerBehaviour;
 import dev.lyze.festive.game.eventCheckers.OnFinalIslandSpawnEventChecker;
-import dev.lyze.festive.game.tool.Tool;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
 

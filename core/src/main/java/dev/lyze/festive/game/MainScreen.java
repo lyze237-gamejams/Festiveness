@@ -18,13 +18,11 @@ import dev.lyze.festive.game.world.SkyBehaviour;
 import dev.lyze.festive.game.body.Explosion;
 import dev.lyze.festive.game.body.Player;
 import dev.lyze.festive.game.eventCheckers.OnFinalIslandSpawnEventChecker;
-import dev.lyze.festive.game.tool.Tool;
+import dev.lyze.festive.game.booper.Booper;
 import dev.lyze.festive.game.world.SpaceBehaviour;
 import dev.lyze.festive.game.world.tiles.StarClusterBackgroundBehaviour;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.UnBox;
-
-import javax.naming.CompositeName;
 
 public class MainScreen extends ScreenAdapter {
     private final UnBox unbox = new UnBox(new World(new Vector2(0, -10), true));
@@ -38,6 +36,7 @@ public class MainScreen extends ScreenAdapter {
     private final Player player;
 
     private final Ui ui;
+    private final Booper booper;
 
     public MainScreen() {
         new GameInput(new GameObject("Input", unbox));
@@ -45,7 +44,7 @@ public class MainScreen extends ScreenAdapter {
         player = new Player(unbox);
         new SideWall(new GameObject("Side Wall", unbox));
         new Ground(player, new GameObject("Ground", unbox));
-        new Tool(player, unbox);
+        booper = new Booper(player, unbox);
         new CameraBehaviour(player, new GameObject(unbox));
 
         spaceBehaviour = new SpaceBehaviour(skyViewport, new GameObject(unbox));
@@ -107,6 +106,11 @@ public class MainScreen extends ScreenAdapter {
         }
 
         unbox.postRender();
+
+        if (booper.getGameObject().isEnabled() && !Constants.debug)
+            booper.getGameObject().setEnabled(false);
+        if (!booper.getGameObject().isEnabled() && Constants.debug)
+            booper.getGameObject().setEnabled(true);
     }
 
     @Override
