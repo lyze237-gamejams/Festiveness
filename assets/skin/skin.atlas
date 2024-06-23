@@ -1,0 +1,20 @@
+
+skin.png
+size: 512, 512
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Alef-Bold
+  rotate: false
+  xy: 1, 334
+  size: 506, 171
+  orig: 506, 171
+  offset: 0, 0
+  index: -1
+Alef-Regular
+  rotate: false
+  xy: 1, 15
+  size: 505, 317
+  orig: 505, 317
+  offset: 0, 0
+  index: -1

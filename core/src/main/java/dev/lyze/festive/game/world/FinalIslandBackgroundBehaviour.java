@@ -55,6 +55,6 @@ public class FinalIslandBackgroundBehaviour extends BehaviourAdapter {
     @Override
     public void render(Batch batch) {
         if (winConditionMet)
-            batch.draw(Constants.assets.getEndIsland(), (finalIslandPosition == null ? player.getStomach2().getBody().getPosition().x : finalIslandPosition.x) - Constants.viewport.getWorldWidth() / 2f - 2, 0, Constants.viewport.getWorldWidth(), Constants.viewport.getWorldHeight());
+            batch.draw(Constants.assets.getEndIsland(), (finalIslandPosition == null ? player.getStomach2().getBody().getPosition().x : finalIslandPosition.x) - Constants.viewport.getWorldWidth() / 2f, 0, Constants.viewport.getWorldWidth(), Constants.viewport.getWorldHeight());
     }
 }

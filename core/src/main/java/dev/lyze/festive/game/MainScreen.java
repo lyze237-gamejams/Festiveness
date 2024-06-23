@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.ScreenUtils;
 import dev.lyze.festive.CameraBehaviour;
 import dev.lyze.festive.Constants;
+import dev.lyze.festive.game.ui.Ui;
 import dev.lyze.festive.game.world.BackgroundBehaviour;
 import dev.lyze.festive.game.world.SkyBehaviour;
 import dev.lyze.festive.game.body.Explosion;
@@ -29,6 +30,8 @@ public class MainScreen extends ScreenAdapter {
 
     private final Player player;
 
+    private final Ui ui;
+
     public MainScreen() {
         new BackgroundBehaviour(new GameObject(unbox));
         player = new Player(unbox);
@@ -37,6 +40,8 @@ public class MainScreen extends ScreenAdapter {
         new Explosion(player, new GameObject(unbox));
         new CameraBehaviour(player, new GameObject(unbox));
         skyBehaviour = new SkyBehaviour(new GameObject(unbox));
+
+        ui = new Ui(unbox);
 
         new OnFinalIslandSpawnEventChecker(new GameObject("Final Island Spawn Event Checker", unbox));
     }
@@ -72,6 +77,8 @@ public class MainScreen extends ScreenAdapter {
         unbox.render(batch);
         batch.end();
 
+        ui.render();
+
         //renderer.setProjectionMatrix(Constants.viewport.getCamera().combined);
         //box2DDebugRenderer.render(unbox.getWorld(), Constants.viewport.getCamera().combined);
         //renderer.begin(ShapeRenderer.ShapeType.Line);
@@ -84,5 +91,6 @@ public class MainScreen extends ScreenAdapter {
     @Override
     public void resize(int width, int height) {
         Constants.viewport.update(width, height);
+        ui.resize(width, height);
     }
 }

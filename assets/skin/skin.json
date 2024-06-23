@@ -1,0 +1,59 @@
+{
+com.badlogic.gdx.graphics.g2d.BitmapFont: {
+	Bold: {
+		file: Alef-Bold.fnt
+		scaledSize: -1
+		markupEnabled: false
+		flip: false
+	}
+	Regular: {
+		file: Alef-Regular.fnt
+		scaledSize: -1
+		markupEnabled: false
+		flip: false
+	}
+}
+com.badlogic.gdx.graphics.Color: {
+	RGBA_163_163_163_255: {
+		r: 0.6392157
+		g: 0.6392157
+		b: 0.6392157
+		a: 1
+	}
+	RGBA_221_221_221_255: {
+		r: 0.8666667
+		g: 0.8666667
+		b: 0.8666667
+		a: 1
+	}
+	RGBA_255_255_255_255: {
+		r: 1
+		g: 1
+		b: 1
+		a: 1
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
+	default: {
+		font: Regular
+		fontColor: RGBA_255_255_255_255
+	}
+	bold: {
+		font: Bold
+		fontColor: RGBA_255_255_255_255
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
+	default: {
+		font: Regular
+		fontColor: RGBA_255_255_255_255
+		downFontColor: RGBA_163_163_163_255
+		overFontColor: RGBA_221_221_221_255
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle: {
+	default: {
+		label: default
+	}
+}
+}

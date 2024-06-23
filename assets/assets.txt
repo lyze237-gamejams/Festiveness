@@ -1,2 +1,7 @@
 atlases/main.atlas
 atlases/main.png
+skin/Alef-Bold.fnt
+skin/Alef-Regular.fnt
+skin/skin.atlas
+skin/skin.json
+skin/skin.png
