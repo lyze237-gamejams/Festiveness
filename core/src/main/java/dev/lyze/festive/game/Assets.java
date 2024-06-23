@@ -1,6 +1,7 @@
 package dev.lyze.festive.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -16,8 +17,13 @@ public class Assets {
     private final Sound bombPickupSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Collect 1.ogg"));
     private final Sound boosterPickupSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Collect 4.ogg"));
     private final Sound reverseBoosterPickupSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Power Down 3.ogg"));
+    private final Sound uiClickSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Fireball Pluck.ogg"));
     private final Sound BoosterSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Power Up 3.ogg"));
     private final Sound coinSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Coin 3.ogg"));
+    private final Sound gameOverSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Fall.ogg"));
+
+    private final Music mainMusic  = Gdx.audio.newMusic(Gdx.files.internal("music/8-Bit-Puzzler.mp3"));
+    private final Music winMusic = Gdx.audio.newMusic(Gdx.files.internal("music/Cute-8-Bit-Monsters.mp3"));
 
     private final TextureAtlas mainAtlas = new TextureAtlas("atlases/main.atlas");
 

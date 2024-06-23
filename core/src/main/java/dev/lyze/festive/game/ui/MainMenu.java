@@ -41,6 +41,7 @@ public class MainMenu extends UiBehaviour<Table> {
         startGame.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                Constants.assets.playSound(Constants.assets.getUiClickSound());
                 Gdx.input.setInputProcessor(getUnBox().findBehaviour(GameInput.class).getInput());
                 getGameObject().setEnabled(false);
 
@@ -54,6 +55,7 @@ public class MainMenu extends UiBehaviour<Table> {
             exit.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
+                    Constants.assets.playSound(Constants.assets.getUiClickSound());
                     Gdx.app.exit();
                 }
             });

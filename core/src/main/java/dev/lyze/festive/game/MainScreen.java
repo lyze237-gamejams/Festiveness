@@ -23,6 +23,8 @@ import dev.lyze.festive.game.world.tiles.StarClusterBackgroundBehaviour;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.UnBox;
 
+import javax.naming.CompositeName;
+
 public class MainScreen extends ScreenAdapter {
     private final UnBox unbox = new UnBox(new World(new Vector2(0, -10), true));
     private final Box2DDebugRenderer box2DDebugRenderer = new Box2DDebugRenderer();
@@ -51,6 +53,13 @@ public class MainScreen extends ScreenAdapter {
         Gdx.input.setInputProcessor(ui.getStage());
 
         new OnFinalIslandSpawnEventChecker(new GameObject("Final Island Spawn Event Checker", unbox));
+
+        if (Constants.assets.getWinMusic().isPlaying())
+            Constants.assets.getWinMusic().stop();
+
+        Constants.assets.getMainMusic().setLooping(true);
+        Constants.assets.getMainMusic().setVolume(0.3f);
+        Constants.assets.getMainMusic().play();
     }
 
     @Override

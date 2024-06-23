@@ -1,6 +1,8 @@
 atlases/main.atlas
 atlases/main.png
 Cursor.png
+music/8-Bit-Puzzler.mp3
+music/Cute-8-Bit-Monsters.mp3
 skin/Alef-Bold.fnt
 skin/Alef-Regular.fnt
 skin/skin.atlas
@@ -14,5 +16,7 @@ sounds/Collect 2.ogg
 sounds/Collect 4.ogg
 sounds/Collect 5.ogg
 sounds/Explosion Sharp.ogg
+sounds/Fall.ogg
+sounds/Fireball Pluck.ogg
 sounds/Power Down 3.ogg
 sounds/Power Up 3.ogg

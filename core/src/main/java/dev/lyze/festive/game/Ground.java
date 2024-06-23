@@ -76,10 +76,19 @@ public class Ground extends BehaviourAdapter {
         if (morganTouchedDown)
             return;
 
-        if (finalIslandSpawned)
+        if (finalIslandSpawned) {
+            Constants.assets.getMainMusic().stop();
+
+            Constants.assets.getWinMusic().setLooping(true);
+            Constants.assets.getWinMusic().setVolume(0.3f);
+            Constants.assets.getWinMusic().play();
+
             Constants.events.fire(new OnTouchdownEvent(true));
-        else
+        }
+        else {
+            Constants.assets.playSound(Constants.assets.getGameOverSound());
             Constants.events.fire(new OnTouchdownEvent(false));
+        }
 
         morganTouchedDown = true;
     }
