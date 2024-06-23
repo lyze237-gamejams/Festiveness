@@ -4,26 +4,6 @@ atlasData: {
 	drawables: []
 	fontDrawables: [
 		{
-			file: C:/Users/lyze/Documents/Workspace/Java/Festiveness/assetsources/skin/Alef-Bold.png
-			bgColor: {
-				r: 1
-				g: 1
-				b: 1
-				a: 1
-			}
-			tint: null
-			tintName: null
-			name: Alef-Bold
-			tiled: false
-			minWidth: -1
-			minHeight: -1
-			customized: false
-			tenPatchData: null
-			tvgData: null
-			type: FONT
-			hidden: false
-		}
-		{
 			file: C:/Users/lyze/Documents/Workspace/Java/Festiveness/assetsources/skin/Alef-Regular.png
 			bgColor: {
 				r: 1
@@ -34,6 +14,26 @@ atlasData: {
 			tint: null
 			tintName: null
 			name: Alef-Regular
+			tiled: false
+			minWidth: -1
+			minHeight: -1
+			customized: false
+			tenPatchData: null
+			tvgData: null
+			type: FONT
+			hidden: false
+		}
+		{
+			file: C:/Users/lyze/Documents/Workspace/Java/Festiveness/assetsources/skin/Alef-Bold.png
+			bgColor: {
+				r: 1
+				g: 1
+				b: 1
+				a: 1
+			}
+			tint: null
+			tintName: null
+			name: Alef-Bold
 			tiled: false
 			minWidth: -1
 			minHeight: -1

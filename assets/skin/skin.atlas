@@ -1,20 +1,34 @@
 
 skin.png
-size: 512, 512
+size: 1024, 1024
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
 Alef-Bold
   rotate: false
-  xy: 1, 334
-  size: 506, 171
-  orig: 506, 171
+  xy: 1, 531
+  size: 506, 482
+  orig: 506, 482
   offset: 0, 0
   index: -1
 Alef-Regular
   rotate: false
-  xy: 1, 15
+  xy: 1, 153
   size: 505, 317
   orig: 505, 317
+  offset: 0, 0
+  index: -1
+Subtitle
+  rotate: false
+  xy: 1, 472
+  size: 506, 57
+  orig: 506, 57
+  offset: 0, 0
+  index: -1
+Title
+  rotate: false
+  xy: 509, 741
+  size: 506, 272
+  orig: 506, 272
   offset: 0, 0
   index: -1

@@ -1,7 +1,10 @@
 atlases/main.atlas
 atlases/main.png
+Cursor.png
 skin/Alef-Bold.fnt
 skin/Alef-Regular.fnt
 skin/skin.atlas
 skin/skin.json
 skin/skin.png
+skin/Subtitle.fnt
+skin/Title.fnt

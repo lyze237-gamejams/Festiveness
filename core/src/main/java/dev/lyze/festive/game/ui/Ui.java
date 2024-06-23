@@ -1,13 +1,14 @@
 package dev.lyze.festive.game.ui;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.UnBox;
+import lombok.Getter;
 
 public class Ui {
-    private final Stage stage;
+    @Getter private final Stage stage;
+
     private final UnBox unBox;
 
     public Ui(UnBox unBox) {
@@ -19,13 +20,8 @@ public class Ui {
     }
 
     private void setupStage() {
-        var table = new Table();
-        table.setFillParent(true);
-
-        var score = new MeterUi(new GameObject("Score Ui", unBox)).generateComponent();
-        table.add(score).top().left().expand().padLeft(24).padTop(18);
-
-        stage.addActor(table);
+        new MeterUi(this, new GameObject("Score Ui", unBox)).generateComponent();
+        new MainMenu(this, new GameObject("Main Menu", unBox)).generateComponent();
     }
 
     public void render() {

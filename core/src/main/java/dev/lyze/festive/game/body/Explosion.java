@@ -2,6 +2,7 @@ package dev.lyze.festive.game.body;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
@@ -22,12 +23,8 @@ public class Explosion extends BehaviourAdapter {
         this.player = player;
     }
 
-    @Override
-    public void update(float delta) {
-        if (!Gdx.input.isButtonJustPressed(Input.Buttons.LEFT))
-            return;
-
-        input.set(Gdx.input.getX(), Gdx.input.getY());
+    public void explode(int screenX, int screenY) {
+        input.set(screenX, screenY);
         Constants.viewport.unproject(input);
 
         createExplosion(50);

@@ -33,15 +33,17 @@ public class MainScreen extends ScreenAdapter {
     private final Ui ui;
 
     public MainScreen() {
+        new GameInput(new GameObject("Input", unbox));
         new BackgroundBehaviour(new GameObject(unbox));
         player = new Player(unbox);
         new Ground(player, new GameObject("Ground", unbox));
         new Tool(player, unbox);
-        new Explosion(player, new GameObject(unbox));
         new CameraBehaviour(player, new GameObject(unbox));
         skyBehaviour = new SkyBehaviour(new GameObject(unbox));
 
+        new Explosion(player, new GameObject(unbox));
         ui = new Ui(unbox);
+        Gdx.input.setInputProcessor(ui.getStage());
 
         new OnFinalIslandSpawnEventChecker(new GameObject("Final Island Spawn Event Checker", unbox));
     }
@@ -79,11 +81,13 @@ public class MainScreen extends ScreenAdapter {
 
         ui.render();
 
-        //renderer.setProjectionMatrix(Constants.viewport.getCamera().combined);
-        //box2DDebugRenderer.render(unbox.getWorld(), Constants.viewport.getCamera().combined);
-        //renderer.begin(ShapeRenderer.ShapeType.Line);
-        //unbox.debugRender(renderer);
-        //renderer.end();
+        /*
+        renderer.setProjectionMatrix(Constants.viewport.getCamera().combined);
+        box2DDebugRenderer.render(unbox.getWorld(), Constants.viewport.getCamera().combined);
+        renderer.begin(ShapeRenderer.ShapeType.Line);
+        unbox.debugRender(renderer);
+        renderer.end();
+         */
 
         unbox.postRender();
     }

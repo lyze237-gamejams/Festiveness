@@ -2,25 +2,32 @@ package dev.lyze.festive.game.ui;
 
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import dev.lyze.festive.Constants;
 import dev.lyze.festive.game.body.physics.BalancerBehaviour;
 import dev.lyze.gdxUnBox2d.GameObject;
 import lombok.Getter;
 
-public class MeterUi extends UiBehaviour<Label> {
+public class MeterUi extends UiBehaviour<Table> {
     private Body bodyToTrack;
 
     private Label label;
 
     @Getter private int score;
 
-    public MeterUi(GameObject gameObject) {
-        super(gameObject);
+    public MeterUi(Ui ui, GameObject gameObject) {
+        super(ui, gameObject);
     }
 
     @Override
-    public Label generateComponent() {
-        return label = new Label("0 meter", Constants.assets.getSkin());
+    public Table generateComponent() {
+        var table = new Table();
+        table.setFillParent(true);
+
+        label = new Label("0 meter", Constants.assets.getSkin());
+        table.add(label).top().left().expand().padLeft(24).padTop(18);
+
+        return table;
     }
 
     @Override

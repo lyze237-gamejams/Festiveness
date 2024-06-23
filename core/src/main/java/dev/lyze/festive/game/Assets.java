@@ -1,6 +1,8 @@
 package dev.lyze.festive.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Cursor;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -22,6 +24,7 @@ public class Assets {
     @Getter private final TextureAtlas.AtlasRegion bomb;
 
     @Getter private final Skin skin;
+    @Getter private final Cursor cursor;
 
     @Getter private final TextureAtlas.AtlasRegion morgiToes;
     @Getter private final TextureAtlas.AtlasRegion morgiFeet;
@@ -53,6 +56,10 @@ public class Assets {
         booster = mainAtlas.findRegion("Collectibles/Booster");
 
         skin = new Skin(Gdx.files.internal("skin/skin.json"));
+
+        var cursorPixmap = new Pixmap(Gdx.files.internal("Cursor.png"));
+        cursor = Gdx.graphics.newCursor(cursorPixmap, 15, 15);
+        cursorPixmap.dispose();
 
         morgiToes = mainAtlas.findRegion("Morgi/toes");
         morgiFeet = mainAtlas.findRegion("Morgi/feet");
