@@ -18,18 +18,6 @@ public class SkyBehaviour extends BehaviourAdapter {
     }
 
     @Override
-    public void start() {
-        for (int x = 0; x < Constants.FinalIslandSpawnPosition / Constants.viewport.getWorldWidth(); x++) {
-            for (int i = 0; i < MathUtils.random(2, 40); i++) {
-                var cloudPosX = MathUtils.random(0, Constants.viewport.getWorldWidth());
-                var cloudPosY = MathUtils.random(Constants.viewport.getWorldHeight() * 2, Constants.viewport.getWorldHeight() * 10);
-
-                new CloudBackgroundBehaviour(x * Constants.viewport.getWorldWidth() + cloudPosX, cloudPosY, Constants.assets.getRandomCloudTile(), new GameObject("Cloud", getUnBox()));
-            }
-        }
-    }
-
-    @Override
     public void debugRender(ShapeRenderer renderer) {
         renderer.rect(Constants.viewport.getCamera().position.x - Constants.viewport.getWorldWidth() / 2f, 0, Constants.viewport.getWorldWidth(), 100f, bottomSkyColor,bottomSkyColor, topSkyColor, topSkyColor);
     }
