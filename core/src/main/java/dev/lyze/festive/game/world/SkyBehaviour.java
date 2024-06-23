@@ -19,8 +19,8 @@ public class SkyBehaviour extends BehaviourAdapter {
 
     @Override
     public void start() {
-        for (int x = 0; x < Constants.FinalIslandScreenNumber; x++) {
-            for (int i = 0; i < MathUtils.random(2, 20); i++) {
+        for (int x = 0; x < Constants.FinalIslandSpawnPosition / Constants.viewport.getWorldWidth(); x++) {
+            for (int i = 0; i < MathUtils.random(2, 40); i++) {
                 var cloudPosX = MathUtils.random(0, Constants.viewport.getWorldWidth());
                 var cloudPosY = MathUtils.random(Constants.viewport.getWorldHeight() * 2, Constants.viewport.getWorldHeight() * 10);
 

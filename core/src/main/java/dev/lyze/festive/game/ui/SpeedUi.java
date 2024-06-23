@@ -8,14 +8,12 @@ import dev.lyze.festive.game.body.physics.BalancerBehaviour;
 import dev.lyze.gdxUnBox2d.GameObject;
 import lombok.Getter;
 
-public class MeterUi extends UiBehaviour<Table> {
+public class SpeedUi extends UiBehaviour<Table> {
     private Body bodyToTrack;
 
     private Label label;
 
-    @Getter private int score;
-
-    public MeterUi(Ui ui, GameObject gameObject) {
+    public SpeedUi(Ui ui, GameObject gameObject) {
         super(ui, gameObject);
     }
 
@@ -24,8 +22,8 @@ public class MeterUi extends UiBehaviour<Table> {
         var table = new Table();
         table.setFillParent(true);
 
-        label = new Label("0 meter", Constants.assets.getSkin());
-        table.add(label).top().left().expand().padLeft(24).padTop(18);
+        label = new Label("0 m/s", Constants.assets.getSkin());
+        table.add(label).top().expand().padLeft(24).padTop(18);
 
         return table;
     }
@@ -37,7 +35,7 @@ public class MeterUi extends UiBehaviour<Table> {
 
     @Override
     public void update(float delta) {
-        score = (int) bodyToTrack.getPosition().x;
-        label.setText(score + " meter");
+        var score = (int) bodyToTrack.getLinearVelocity().len();
+        label.setText(score + " m/s");
     }
 }

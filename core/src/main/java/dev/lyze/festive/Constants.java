@@ -1,11 +1,8 @@
 package dev.lyze.festive;
 
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.lyze.festive.eventsystem.EventManager;
 import dev.lyze.festive.game.Assets;
-
-import javax.swing.text.View;
 
 public class Constants {
     public static float BodyPartPpm = 50f;
@@ -18,8 +15,7 @@ public class Constants {
     public static final short Bit_Enemies = 256;
     public static final short Bit_Tools = 512;
 
-    public static final int FinalIslandScreenNumber = 24;
-    public static final float FinalIslandSpawnPosition = 160;
+    public static final float FinalIslandSpawnPosition = 300;
 
     public static final FitViewport viewport = new FitViewport(16,9);
     public static final EventManager events = new EventManager();

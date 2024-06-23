@@ -20,8 +20,11 @@ public class Ui {
     }
 
     private void setupStage() {
-        new MeterUi(this, new GameObject("Score Ui", unBox)).generateComponent();
         new MainMenu(this, new GameObject("Main Menu", unBox)).generateComponent();
+        new GameOverMenu(this, new GameObject("Game Over", unBox)).generateComponent();
+        new StatsUi(this, new GameObject("Score Ui", unBox)).generateComponent();
+        new BoostUi(this, new GameObject("Boosts Ui", unBox)).generateComponent();
+        new JumpUi(this, new GameObject("Jump Ui", unBox)).generateComponent();
     }
 
     public void render() {

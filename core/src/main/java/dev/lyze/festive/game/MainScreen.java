@@ -52,17 +52,8 @@ public class MainScreen extends ScreenAdapter {
     public void render(float delta) {
         ScreenUtils.clear(skyBehaviour.getTopSkyColor());
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE))
-            player.getBalancer().setEnabled(!player.getBalancer().isEnabled());
-
         if (Gdx.input.isKeyJustPressed(Input.Keys.R))
             ((Game) Gdx.app.getApplicationListener()).setScreen(new MainScreen());
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.B))
-            player.applySpeedBoost();
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.J))
-            player.applyJump();
 
         Gdx.gl.glLineWidth(4);
 
