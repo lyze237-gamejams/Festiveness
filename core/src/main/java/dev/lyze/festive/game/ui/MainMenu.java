@@ -33,7 +33,7 @@ public class MainMenu extends UiBehaviour<Table> {
         var table = new Table();
 
         table.add(new Label("A rather festive birb", Constants.assets.getSkin(), "title")).row();
-        Label subtitle = new Label("Morgan is stuck on a summery island.\nHelp him by yeeting him across the ocean.\nBuild up infinite speed to time travel back to winter!", Constants.assets.getSkin(), "subtitle");
+        Label subtitle = new Label("Morgan is stuck on a summery island.\nHelp him by yeeting him across the ocean.\nBuild up infinite speed to time travel back to winter!\n\nClick left next to Morgi to yeet him into the air.\nIn air press space to boost and left click to jump.", Constants.assets.getSkin(), "subtitle");
         subtitle.setAlignment(Align.center, Align.center);
         table.add(subtitle).padBottom(24).row();
 
