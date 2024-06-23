@@ -4,6 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import dev.lyze.festive.Constants;
+import dev.lyze.festive.eventsystem.EventListener;
+import dev.lyze.festive.eventsystem.events.Event;
+import dev.lyze.festive.eventsystem.events.OnTouchdownEvent;
 import dev.lyze.festive.game.Assets;
 import dev.lyze.festive.game.body.physics.BalancerBehaviour;
 import dev.lyze.festive.game.body.physics.init.BodyPart;
@@ -36,6 +39,13 @@ public class Player {
 
         setupPhysicsBodyParts(unBox);
         balancer = new BalancerBehaviour(this, gameObject);
+
+        Constants.events.addListener(new EventListener<>(OnTouchdownEvent.class) {
+            @Override
+            protected void fire(OnTouchdownEvent event) {
+                resetVelocity();
+            }
+        });
     }
 
     private void setupPhysicsBodyParts(UnBox unBox) {
@@ -106,6 +116,15 @@ public class Player {
             var length = velocity.len();
             velocity.set(MathUtils.random(45, 55), MathUtils.random(45, 55)).nor().scl(length);
             body.setLinearVelocity(velocity);
+        }
+    }
+
+    public void resetVelocity() {
+        for (CreateBodyPartFixtureBehaviour bodyPart : unBox.findBehaviours(CreateBodyPartFixtureBehaviour.class)) {
+            var box2dBehaviour = bodyPart.getGameObject().getBehaviour(Box2dBehaviour.class);
+            var body = box2dBehaviour.getBody();
+
+            body.setLinearVelocity(Vector2.Zero);
         }
     }
 }

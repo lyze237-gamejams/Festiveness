@@ -2,7 +2,6 @@ package dev.lyze.festive.game.world;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.lyze.festive.Constants;
 import dev.lyze.gdxUnBox2d.GameObject;
@@ -20,7 +19,7 @@ public class BackgroundBehaviour extends BehaviourAdapter {
         new StartIslandBackgroundBehaviour(new GameObject("Start Island", getUnBox()));
         for (int i = 0; i < 3; i++)
             backgrounds.add(new Background(i, 0, null, Constants.assets.getRandomWaterTile()));
-        new EndIslandBackgroundBehaviour(new GameObject("End Island", getUnBox()));
+        new FinalIslandBackgroundBehaviour(new GameObject("End Island", getUnBox()));
     }
 
     @Override

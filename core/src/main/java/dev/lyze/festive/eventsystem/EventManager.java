@@ -1,5 +1,6 @@
 package dev.lyze.festive.eventsystem;
 
+import com.badlogic.gdx.Gdx;
 import dev.lyze.festive.eventsystem.events.Event;
 
 import java.util.ArrayList;
@@ -36,6 +37,8 @@ public class EventManager
      */
     public <TEvent extends Event> void fire(TEvent event)
     {
+        Gdx.app.log("EventListener", "Firing " + event.getClass());
+
         fireOnList(event, preEvents);
         fireOnList(event, events);
     }

@@ -12,9 +12,10 @@ import dev.lyze.festive.Constants;
 import dev.lyze.festive.game.body.physics.init.BodyPart;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
+import lombok.Getter;
 
 public class BodyPartRendererBehaviour extends BehaviourAdapter {
-    private final BodyPart bodyPart;
+    @Getter private final BodyPart bodyPart;
     private final Sprite sprite;
     private final boolean isFront;
 

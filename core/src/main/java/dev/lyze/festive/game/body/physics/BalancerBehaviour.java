@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class BalancerBehaviour extends BehaviourAdapter {
-    private final Player player;
+    @Getter private final Player player;
 
     @Getter @Setter
     private boolean enabled = true;

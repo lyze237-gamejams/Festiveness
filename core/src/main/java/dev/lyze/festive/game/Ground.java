@@ -1,9 +1,17 @@
 package dev.lyze.festive.game;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import dev.lyze.festive.Constants;
+import dev.lyze.festive.eventsystem.EventListener;
+import dev.lyze.festive.eventsystem.events.Event;
+import dev.lyze.festive.eventsystem.events.OnFinalIslandSpawnEvent;
+import dev.lyze.festive.eventsystem.events.OnFlingEvent;
+import dev.lyze.festive.eventsystem.events.OnTouchdownEvent;
 import dev.lyze.festive.game.body.Player;
+import dev.lyze.festive.game.body.physics.init.BodyPart;
+import dev.lyze.gdxUnBox2d.Behaviour;
 import dev.lyze.gdxUnBox2d.BodyDefType;
 import dev.lyze.gdxUnBox2d.Box2dBehaviour;
 import dev.lyze.gdxUnBox2d.GameObject;
@@ -16,6 +24,9 @@ public class Ground extends BehaviourAdapter {
     private final Player player;
 
     private final Box2dBehaviour physicsBehaviour;
+
+    private boolean morganFlinged, morganTouchedDown;
+    private boolean finalIslandSpawned;
 
     public Ground(Player player, GameObject gameObject) {
         super(gameObject);
@@ -36,8 +47,41 @@ public class Ground extends BehaviourAdapter {
     }
 
     @Override
+    public void start() {
+        Constants.events.addListener(new EventListener<>(OnFinalIslandSpawnEvent.class) {
+            @Override
+            protected void fire(OnFinalIslandSpawnEvent event) {
+                finalIslandSpawned = true;
+            }
+        });
+
+        Constants.events.addListener(new EventListener<>(OnFlingEvent.class) {
+            @Override
+            protected void fire(OnFlingEvent event) {
+                morganFlinged = true;
+            }
+        });
+    }
+
+    @Override
     public void fixedUpdate() {
         physicsBehaviour.getBody().setTransform(player.getStomach2().getBody().getPosition().x - width / 2f, 0, physicsBehaviour.getBody().getAngle());
+    }
+
+    @Override
+    public void onCollisionEnter(Behaviour other, Contact contact) {
+        if (!morganFlinged)
+            return;
+
+        if (morganTouchedDown)
+            return;
+
+        if (finalIslandSpawned)
+            Constants.events.fire(new OnTouchdownEvent(true));
+        else
+            Constants.events.fire(new OnTouchdownEvent(false));
+
+        morganTouchedDown = true;
     }
 }
 

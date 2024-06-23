@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import dev.lyze.festive.Constants;
+import dev.lyze.festive.eventsystem.events.OnFlingEvent;
 import dev.lyze.festive.game.body.explosions.ExplosionBallBehaviour;
 import dev.lyze.gdxUnBox2d.Box2dBehaviour;
 import dev.lyze.gdxUnBox2d.GameObject;
@@ -30,6 +31,8 @@ public class Explosion extends BehaviourAdapter {
         Constants.viewport.unproject(input);
 
         createExplosion(50);
+
+        Constants.events.fire(new OnFlingEvent());
     }
 
     private void createExplosion(int totalBalls) {
