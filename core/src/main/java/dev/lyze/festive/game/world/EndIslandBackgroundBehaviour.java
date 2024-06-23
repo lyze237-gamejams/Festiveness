@@ -33,6 +33,6 @@ public class EndIslandBackgroundBehaviour extends BehaviourAdapter {
     @Override
     public void render(Batch batch) {
         if (winConditionMet)
-            batch.draw(Constants.assets.getEndIsland(), Constants.viewport.getCamera().position.x - Constants.viewport.getMinWorldWidth()  / 2f, 0, Constants.viewport.getMinWorldWidth(), Constants.viewport.getMinWorldHeight());
+            batch.draw(Constants.assets.getEndIsland(), Constants.viewport.getCamera().position.x - Constants.viewport.getWorldWidth()  / 2f, 0, Constants.viewport.getWorldWidth(), Constants.viewport.getWorldHeight());
     }
 }

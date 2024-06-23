@@ -13,6 +13,6 @@ public class StartIslandBackgroundBehaviour extends BehaviourAdapter {
 
     @Override
     public void render(Batch batch) {
-        batch.draw(Constants.assets.getStartIsland(), 0, 0, Constants.viewport.getMinWorldWidth(), Constants.viewport.getMinWorldHeight());
+        batch.draw(Constants.assets.getStartIsland(), 0, 0, Constants.viewport.getWorldWidth(), Constants.viewport.getWorldHeight());
     }
 }

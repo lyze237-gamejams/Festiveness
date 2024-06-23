@@ -1,6 +1,7 @@
 package dev.lyze.festive;
 
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.lyze.festive.eventsystem.EventManager;
 import dev.lyze.festive.game.Assets;
 
@@ -20,7 +21,7 @@ public class Constants {
     public static final int FinalIslandScreenNumber = 24;
     public static final float FinalIslandSpawnPosition = 160;
 
-    public static final ExtendViewport viewport = new ExtendViewport(16,9);
+    public static final FitViewport viewport = new FitViewport(16,9);
     public static final EventManager events = new EventManager();
 
     public static final Assets assets = new Assets();

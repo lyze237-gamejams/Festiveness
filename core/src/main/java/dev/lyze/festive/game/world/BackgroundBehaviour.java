@@ -3,6 +3,7 @@ package dev.lyze.festive.game.world;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.lyze.festive.Constants;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
@@ -29,12 +30,12 @@ public class BackgroundBehaviour extends BehaviourAdapter {
         var mostLeftX = backgrounds.getFirst().x;
         var mostRightX = backgrounds.getLast().x;
 
-        if (cameraPosition.x > mostRightX * Constants.viewport.getMinWorldWidth()) {
+        if (cameraPosition.x > mostRightX * Constants.viewport.getWorldWidth()) {
             backgrounds.removeFirst();
             backgrounds.addLast(new Background(mostRightX + 1, 0, null, Constants.assets.getRandomWaterTile()));
         }
 
-        if (cameraPosition.x - Constants.viewport.getWorldWidth() / 2f < mostLeftX * Constants.viewport.getMinWorldWidth()) {
+        if (cameraPosition.x - Constants.viewport.getWorldWidth() / 2f < mostLeftX * Constants.viewport.getWorldWidth()) {
             backgrounds.removeLast();
             backgrounds.addFirst(new Background(mostLeftX - 1, 0, null, Constants.assets.getRandomWaterTile()));
         }
@@ -53,11 +54,11 @@ public class BackgroundBehaviour extends BehaviourAdapter {
         private TextureAtlas.AtlasRegion overlay;
         private TextureAtlas.AtlasRegion texture;
 
-        public void draw(ExtendViewport viewport, Batch batch) {
-            batch.draw(texture, x * viewport.getMinWorldWidth(), y * viewport.getMinWorldHeight(), viewport.getMinWorldWidth(), viewport.getMinWorldHeight());
+        public void draw(FitViewport viewport, Batch batch) {
+            batch.draw(texture, x * viewport.getWorldWidth(), y * viewport.getWorldHeight(), viewport.getWorldWidth(), viewport.getWorldHeight());
 
             if (overlay != null)
-                batch.draw(overlay, x * viewport.getMinWorldWidth(), y * viewport.getMinWorldHeight(), viewport.getMinWorldWidth(), viewport.getMinWorldHeight());
+                batch.draw(overlay, x * viewport.getWorldWidth(), y * viewport.getWorldHeight(), viewport.getWorldWidth(), viewport.getWorldHeight());
         }
     }
 }

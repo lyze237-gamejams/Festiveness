@@ -14,7 +14,7 @@ public class OnFinalIslandSpawnEventChecker extends BehaviourAdapter {
 
     @Override
     public void update(float delta) {
-        if (!fired && Constants.viewport.getCamera().position.x > Constants.FinalIslandSpawnPosition && Constants.viewport.getCamera().position.y > Constants.viewport.getMinWorldHeight() * 2f) { // win condition
+        if (!fired && Constants.viewport.getCamera().position.x > Constants.FinalIslandSpawnPosition && Constants.viewport.getCamera().position.y > Constants.viewport.getWorldHeight() * 2f) { // win condition
             fired = true;
             Constants.events.fire(new OnFinalIslandSpawnEvent());
         }
