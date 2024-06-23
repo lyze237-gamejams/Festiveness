@@ -11,13 +11,15 @@ import dev.lyze.festive.game.body.physics.init.CreateBodyPartFixtureBehaviour;
 import dev.lyze.gdxUnBox2d.Box2dBehaviour;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 
 public abstract class StuffBehaviour extends BehaviourAdapter {
     @Getter private Player player;
     @Getter private Array<CreateBodyPartFixtureBehaviour> bodyParts;
 
-    @Getter private final float x, y, width, height;
+    @Getter @Setter(AccessLevel.PACKAGE) private float x, y, width, height;
     private final TextureAtlas.AtlasRegion texture;
 
     public StuffBehaviour(float x, float y, TextureAtlas.AtlasRegion texture, GameObject gameObject) {
@@ -25,8 +27,10 @@ public abstract class StuffBehaviour extends BehaviourAdapter {
         this.x = x;
         this.y = y;
 
-        this.width = texture.originalWidth * Constants.GraphicsPpm;
-        this.height = texture.originalHeight * Constants.GraphicsPpm;
+        if (texture != null) {
+            this.width = texture.originalWidth * Constants.GraphicsPpm;
+            this.height = texture.originalHeight * Constants.GraphicsPpm;
+        }
 
         this.texture = texture;
     }

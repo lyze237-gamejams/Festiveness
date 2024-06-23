@@ -18,6 +18,8 @@ import dev.lyze.festive.game.body.Explosion;
 import dev.lyze.festive.game.body.Player;
 import dev.lyze.festive.game.eventCheckers.OnFinalIslandSpawnEventChecker;
 import dev.lyze.festive.game.tool.Tool;
+import dev.lyze.festive.game.world.SpaceBehaviour;
+import dev.lyze.festive.game.world.tiles.StarClusterBackgroundBehaviour;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.UnBox;
 
@@ -26,6 +28,7 @@ public class MainScreen extends ScreenAdapter {
     private final Box2DDebugRenderer box2DDebugRenderer = new Box2DDebugRenderer();
     private final SpriteBatch batch = new SpriteBatch();
     private final ShapeRenderer renderer = new ShapeRenderer();
+    private final SpaceBehaviour spaceBehaviour;
     private final SkyBehaviour skyBehaviour;
 
     private final Player player;
@@ -39,6 +42,8 @@ public class MainScreen extends ScreenAdapter {
         new Ground(player, new GameObject("Ground", unbox));
         new Tool(player, unbox);
         new CameraBehaviour(player, new GameObject(unbox));
+
+        spaceBehaviour = new SpaceBehaviour(new GameObject(unbox));
         skyBehaviour = new SkyBehaviour(new GameObject(unbox));
 
         new Explosion(player, new GameObject(unbox));
@@ -50,18 +55,17 @@ public class MainScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-        ScreenUtils.clear(skyBehaviour.getTopSkyColor());
+        ScreenUtils.clear(spaceBehaviour.getTopSkyColor());
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.R))
             ((Game) Gdx.app.getApplicationListener()).setScreen(new MainScreen());
-
-        Gdx.gl.glLineWidth(4);
 
         unbox.preRender(delta);
         Constants.viewport.apply();
 
         renderer.setProjectionMatrix(Constants.viewport.getCamera().combined);
         renderer.begin(ShapeRenderer.ShapeType.Filled);
+        spaceBehaviour.debugRender(renderer);
         skyBehaviour.debugRender(renderer);
         renderer.end();
 
@@ -71,6 +75,11 @@ public class MainScreen extends ScreenAdapter {
         batch.end();
 
         ui.render();
+
+        renderer.setProjectionMatrix(Constants.viewport.getCamera().combined);
+        renderer.begin(ShapeRenderer.ShapeType.Filled);
+        unbox.findBehaviours(StarClusterBackgroundBehaviour.class).forEach(s -> s.debugRender(renderer));
+        renderer.end();
 
         /*
         renderer.setProjectionMatrix(Constants.viewport.getCamera().combined);

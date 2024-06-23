@@ -16,6 +16,7 @@ public class Constants {
     public static final short Bit_Tools = 512;
 
     public static final float FinalIslandSpawnPosition = 2000;
+    public static final float StarsSpawnPosition = 300;
 
     public static final FitViewport viewport = new FitViewport(16,9);
     public static final EventManager events = new EventManager();

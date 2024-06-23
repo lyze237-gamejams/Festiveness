@@ -52,6 +52,7 @@ public class BackgroundBehaviour extends BehaviourAdapter {
         createStuff(Stuff.BOMB, MathUtils.random(0, 1));
         createStuff(Stuff.BOOSTER, MathUtils.random(0, 2));
         createStuff(Stuff.REVERSE_BOOSTER, MathUtils.random(0, 1));
+        createStuff(Stuff.STAR, MathUtils.random(50, 200));
     }
 
     private void createStuff(Stuff stuff, int amount) {
@@ -108,7 +109,9 @@ public class BackgroundBehaviour extends BehaviourAdapter {
             if (cool) {
                 switch (stuff) {
                     case CLOUD:
-                        stuffs.get(stuff).add(new CloudBackgroundBehaviour(x, y, sprite, new GameObject("Cloud", getUnBox())));
+                        if (y < Constants.StarsSpawnPosition) {
+                            stuffs.get(stuff).add(new CloudBackgroundBehaviour(x, y, sprite, new GameObject("Cloud", getUnBox())));
+                        }
                         break;
                     case COIN:
                         stuffs.get(stuff).add(new CoinBackgroundBehaviour(x, y, new GameObject("Coin", getUnBox())));
@@ -122,6 +125,10 @@ public class BackgroundBehaviour extends BehaviourAdapter {
                     case REVERSE_BOOSTER:
                         stuffs.get(stuff).add(new ReverseBoosterBackgroundBehaviour(x, y, new GameObject("Reverse Bomb", getUnBox())));
                         break;
+                    case STAR:
+                        if (y > Constants.StarsSpawnPosition) {
+                            stuffs.get(stuff).add(new StarClusterBackgroundBehaviour(x, y, new GameObject("Star", getUnBox())));
+                        }
                 }
                 return;
             }
@@ -172,6 +179,6 @@ public class BackgroundBehaviour extends BehaviourAdapter {
     }
 
     private enum Stuff {
-        CLOUD, COIN, BOOSTER, BOMB, REVERSE_BOOSTER
+        CLOUD, COIN, BOOSTER, BOMB, REVERSE_BOOSTER, STAR
     }
 }

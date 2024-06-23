@@ -10,8 +10,8 @@ import lombok.Getter;
 
 @Getter
 public class SkyBehaviour extends BehaviourAdapter {
-    private final Color bottomSkyColor = new Color(164f / 255f, 218f / 255f, 299f / 255f, 1f);
-    private final Color topSkyColor = new Color(96 / 255f, 188 / 255f, 235 / 255f, 1f);
+    private final Color bottomSkyColor = new Color(210f / 255f, 240f / 255f, 230f / 255f, 1f);
+    private final Color topSkyColor = new Color(65 / 255f, 139 / 255f, 199 / 255f, 1f);
 
     public SkyBehaviour(GameObject gameObject) {
         super(gameObject);
@@ -19,6 +19,6 @@ public class SkyBehaviour extends BehaviourAdapter {
 
     @Override
     public void debugRender(ShapeRenderer renderer) {
-        renderer.rect(Constants.viewport.getCamera().position.x - Constants.viewport.getWorldWidth() / 2f, 0, Constants.viewport.getWorldWidth(), 100f, bottomSkyColor,bottomSkyColor, topSkyColor, topSkyColor);
+        renderer.rect(Constants.viewport.getCamera().position.x - Constants.viewport.getWorldWidth() / 2f, 0, Constants.viewport.getWorldWidth(), Constants.StarsSpawnPosition, bottomSkyColor,bottomSkyColor, topSkyColor, topSkyColor);
     }
 }
