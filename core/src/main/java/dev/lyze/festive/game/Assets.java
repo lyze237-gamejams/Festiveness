@@ -42,6 +42,8 @@ public class Assets {
     private final Skin skin;
     private final Cursor cursor;
 
+    private final TextureAtlas.AtlasRegion morgi;
+
     private final TextureAtlas.AtlasRegion morgiToes;
     private final TextureAtlas.AtlasRegion morgiFeet;
     private final TextureAtlas.AtlasRegion morgiLowerLegs;
@@ -77,6 +79,8 @@ public class Assets {
         var cursorPixmap = new Pixmap(Gdx.files.internal("Cursor.png"));
         cursor = Gdx.graphics.newCursor(cursorPixmap, 15, 15);
         cursorPixmap.dispose();
+
+        morgi = mainAtlas.findRegion("Morgi");
 
         morgiToes = mainAtlas.findRegion("Morgi/toes");
         morgiFeet = mainAtlas.findRegion("Morgi/feet");

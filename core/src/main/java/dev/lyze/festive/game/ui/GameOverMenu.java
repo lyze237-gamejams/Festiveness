@@ -4,10 +4,7 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Value;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import dev.lyze.festive.Constants;
@@ -27,7 +24,13 @@ public class GameOverMenu extends UiBehaviour<Table> {
 
                 getComponent().clear();
                 getComponent().add(generateLeftTable(event.isWon())).width(Value.percentWidth(0.5f, getComponent())).expand();
-                getComponent().add().width(Value.percentWidth(0.5f, getComponent())).expand();
+
+                Image component = null;
+                if (!event.isWon()) {
+                    component = new Image(Constants.assets.getMorgi());
+                    component.setScale(0.8f);
+                }
+                getComponent().add(component).width(Value.percentWidth(0.5f, getComponent())).expand();
             }
         });
     }

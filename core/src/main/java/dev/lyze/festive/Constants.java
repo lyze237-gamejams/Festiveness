@@ -22,4 +22,6 @@ public class Constants {
     public static final EventManager events = new EventManager();
 
     public static final Assets assets = new Assets();
+
+    public static boolean debug = false;
 }

@@ -41,6 +41,7 @@ public class MainScreen extends ScreenAdapter {
         new GameInput(new GameObject("Input", unbox));
         new BackgroundBehaviour(new GameObject(unbox));
         player = new Player(unbox);
+        new SideWall(new GameObject("Side Wall", unbox));
         new Ground(player, new GameObject("Ground", unbox));
         new Tool(player, unbox);
         new CameraBehaviour(player, new GameObject(unbox));
@@ -69,6 +70,9 @@ public class MainScreen extends ScreenAdapter {
         if (Gdx.input.isKeyJustPressed(Input.Keys.R))
             ((Game) Gdx.app.getApplicationListener()).setScreen(new MainScreen());
 
+        if (Gdx.input.isKeyJustPressed(Input.Keys.F10))
+            Constants.debug = !Constants.debug;
+
         unbox.preRender(delta);
         Constants.viewport.apply();
 
@@ -90,13 +94,13 @@ public class MainScreen extends ScreenAdapter {
         unbox.findBehaviours(StarClusterBackgroundBehaviour.class).forEach(s -> s.debugRender(renderer));
         renderer.end();
 
-        /*
-        renderer.setProjectionMatrix(Constants.viewport.getCamera().combined);
-        box2DDebugRenderer.render(unbox.getWorld(), Constants.viewport.getCamera().combined);
-        renderer.begin(ShapeRenderer.ShapeType.Line);
-        unbox.debugRender(renderer);
-        renderer.end();
-         */
+        if (Constants.debug) {
+            renderer.setProjectionMatrix(Constants.viewport.getCamera().combined);
+            box2DDebugRenderer.render(unbox.getWorld(), Constants.viewport.getCamera().combined);
+            renderer.begin(ShapeRenderer.ShapeType.Line);
+            unbox.debugRender(renderer);
+            renderer.end();
+        }
 
         unbox.postRender();
     }
