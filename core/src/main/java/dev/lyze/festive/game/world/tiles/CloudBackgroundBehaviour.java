@@ -1,7 +1,6 @@
-package dev.lyze.festive.game.world;
+package dev.lyze.festive.game.world.tiles;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import dev.lyze.festive.game.world.tiles.StuffBehaviour;
 import dev.lyze.gdxUnBox2d.GameObject;
 
 public class CloudBackgroundBehaviour extends StuffBehaviour {
@@ -15,5 +14,10 @@ public class CloudBackgroundBehaviour extends StuffBehaviour {
     public void update(float delta) {
         if ((time -= delta) < 0)
             getGameObject().destroy();
+    }
+
+    @Override
+    protected void touched() {
+
     }
 }

@@ -1,6 +1,7 @@
 package dev.lyze.festive.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -9,38 +10,47 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
 import lombok.Getter;
 
+@Getter
 public class Assets {
-    @Getter private final TextureAtlas mainAtlas = new TextureAtlas("atlases/main.atlas");
+    private final Sound explosionSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Explosion Sharp.ogg"));
+    private final Sound bombPickupSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Collect 1.ogg"));
+    private final Sound boosterPickupSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Collect 4.ogg"));
+    private final Sound reverseBoosterPickupSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Power Down 3.ogg"));
+    private final Sound BoosterSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Power Up 3.ogg"));
+    private final Sound coinSound = Gdx.audio.newSound(Gdx.files.internal("sounds/Coin 3.ogg"));
 
-    @Getter private final Array<TextureAtlas.AtlasRegion> waterTiles;
-    @Getter private final TextureAtlas.AtlasRegion startIsland ;
-    @Getter private final TextureAtlas.AtlasRegion endIsland;
-    @Getter private final Array<TextureAtlas.AtlasRegion> clouds;
+    private final TextureAtlas mainAtlas = new TextureAtlas("atlases/main.atlas");
 
-    @Getter private final TextureAtlas.AtlasRegion booper;
+    private final Array<TextureAtlas.AtlasRegion> waterTiles;
+    private final TextureAtlas.AtlasRegion startIsland ;
+    private final TextureAtlas.AtlasRegion endIsland;
+    private final Array<TextureAtlas.AtlasRegion> clouds;
 
-    @Getter private final TextureAtlas.AtlasRegion coin;
-    @Getter private final TextureAtlas.AtlasRegion booster;
-    @Getter private final TextureAtlas.AtlasRegion bomb;
+    private final TextureAtlas.AtlasRegion booper;
 
-    @Getter private final Skin skin;
-    @Getter private final Cursor cursor;
+    private final TextureAtlas.AtlasRegion coin;
+    private final TextureAtlas.AtlasRegion booster;
+    private final TextureAtlas.AtlasRegion reverseBooster;
+    private final TextureAtlas.AtlasRegion bomb;
 
-    @Getter private final TextureAtlas.AtlasRegion morgiToes;
-    @Getter private final TextureAtlas.AtlasRegion morgiFeet;
-    @Getter private final TextureAtlas.AtlasRegion morgiLowerLegs;
-    @Getter private final TextureAtlas.AtlasRegion morgiUpperLegs;
+    private final Skin skin;
+    private final Cursor cursor;
 
-    @Getter private final TextureAtlas.AtlasRegion morgiLowerTorso;
-    @Getter private final TextureAtlas.AtlasRegion morgiMiddleTorso;
-    @Getter private final TextureAtlas.AtlasRegion morgiUpperTorso;
+    private final TextureAtlas.AtlasRegion morgiToes;
+    private final TextureAtlas.AtlasRegion morgiFeet;
+    private final TextureAtlas.AtlasRegion morgiLowerLegs;
+    private final TextureAtlas.AtlasRegion morgiUpperLegs;
 
-    @Getter private final TextureAtlas.AtlasRegion morgiUpperArm;
-    @Getter private final TextureAtlas.AtlasRegion morgiLowerArm;
-    @Getter private final TextureAtlas.AtlasRegion morgiHand;
+    private final TextureAtlas.AtlasRegion morgiLowerTorso;
+    private final TextureAtlas.AtlasRegion morgiMiddleTorso;
+    private final TextureAtlas.AtlasRegion morgiUpperTorso;
 
-    @Getter private final TextureAtlas.AtlasRegion morgiNeck;
-    @Getter private final TextureAtlas.AtlasRegion morgiHead;
+    private final TextureAtlas.AtlasRegion morgiUpperArm;
+    private final TextureAtlas.AtlasRegion morgiLowerArm;
+    private final TextureAtlas.AtlasRegion morgiHand;
+
+    private final TextureAtlas.AtlasRegion morgiNeck;
+    private final TextureAtlas.AtlasRegion morgiHead;
 
     public Assets() {
         waterTiles = mainAtlas.findRegions("Tiles/Water/Water");
@@ -54,6 +64,7 @@ public class Assets {
         coin = mainAtlas.findRegion("Collectibles/Coin");
         bomb = mainAtlas.findRegion("Collectibles/Bomb");
         booster = mainAtlas.findRegion("Collectibles/Booster");
+        reverseBooster = mainAtlas.findRegion("Collectibles/ReverseBooster");
 
         skin = new Skin(Gdx.files.internal("skin/skin.json"));
 
@@ -84,5 +95,9 @@ public class Assets {
 
     public TextureAtlas.AtlasRegion getRandomCloudTile() {
         return getClouds().get(MathUtils.random(getClouds().size - 1));
+    }
+
+    public void playSound(Sound sound) {
+        sound.play(0.3f, MathUtils.random(0.8f, 1.2f), 0f);
     }
 }

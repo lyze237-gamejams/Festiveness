@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.OrderedMap;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.lyze.festive.Constants;
-import dev.lyze.festive.game.world.tiles.StuffBehaviour;
+import dev.lyze.festive.game.world.tiles.*;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
 import lombok.AllArgsConstructor;
@@ -51,6 +51,7 @@ public class BackgroundBehaviour extends BehaviourAdapter {
         createStuff(Stuff.COIN, MathUtils.random(0, 3));
         createStuff(Stuff.BOMB, MathUtils.random(0, 1));
         createStuff(Stuff.BOOSTER, MathUtils.random(0, 2));
+        createStuff(Stuff.REVERSE_BOOSTER, MathUtils.random(0, 1));
     }
 
     private void createStuff(Stuff stuff, int amount) {
@@ -118,6 +119,9 @@ public class BackgroundBehaviour extends BehaviourAdapter {
                     case BOMB:
                         stuffs.get(stuff).add(new BombBackgroundBehaviour(x, y, new GameObject("Bomb", getUnBox())));
                         break;
+                    case REVERSE_BOOSTER:
+                        stuffs.get(stuff).add(new ReverseBoosterBackgroundBehaviour(x, y, new GameObject("Reverse Bomb", getUnBox())));
+                        break;
                 }
                 return;
             }
@@ -168,6 +172,6 @@ public class BackgroundBehaviour extends BehaviourAdapter {
     }
 
     private enum Stuff {
-        CLOUD, COIN, BOOSTER, BOMB
+        CLOUD, COIN, BOOSTER, BOMB, REVERSE_BOOSTER
     }
 }

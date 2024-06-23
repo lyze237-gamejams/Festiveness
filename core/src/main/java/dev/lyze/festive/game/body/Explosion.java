@@ -1,8 +1,7 @@
 package dev.lyze.festive.game.body;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
@@ -18,9 +17,22 @@ public class Explosion extends BehaviourAdapter {
     private final Vector2 input = new Vector2();
     private final Player player;
 
+    private float explosionEventDelay = 0.2f;
+    private boolean shouldFireExplosionEvent = false;
+
     public Explosion(Player player, GameObject gameObject) {
         super(gameObject);
         this.player = player;
+    }
+
+    @Override
+    public void update(float delta) {
+        if (shouldFireExplosionEvent) {
+            if ((explosionEventDelay -= delta)  < 0) {
+                Constants.events.fire(new OnFlingEvent());
+                shouldFireExplosionEvent = false;
+            }
+        }
     }
 
     public void explode(int screenX, int screenY) {
@@ -29,7 +41,10 @@ public class Explosion extends BehaviourAdapter {
 
         createExplosion(50);
 
-        Constants.events.fire(new OnFlingEvent());
+        Constants.assets.playSound(Constants.assets.getExplosionSound());
+        Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Arrow);
+
+        shouldFireExplosionEvent = true;
     }
 
     private void createExplosion(int totalBalls) {

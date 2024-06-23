@@ -8,3 +8,11 @@ skin/skin.json
 skin/skin.png
 skin/Subtitle.fnt
 skin/Title.fnt
+sounds/Coin 3.ogg
+sounds/Collect 1.ogg
+sounds/Collect 2.ogg
+sounds/Collect 4.ogg
+sounds/Collect 5.ogg
+sounds/Explosion Sharp.ogg
+sounds/Power Down 3.ogg
+sounds/Power Up 3.ogg
