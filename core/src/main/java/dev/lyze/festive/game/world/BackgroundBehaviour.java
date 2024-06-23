@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.lyze.festive.Constants;
 import dev.lyze.festive.game.world.tiles.*;
 import dev.lyze.gdxUnBox2d.GameObject;
+import dev.lyze.gdxUnBox2d.GameObjectState;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
 import lombok.AllArgsConstructor;
 
@@ -53,6 +54,13 @@ public class BackgroundBehaviour extends BehaviourAdapter {
         createStuff(Stuff.BOOSTER, MathUtils.random(0, 2));
         createStuff(Stuff.REVERSE_BOOSTER, MathUtils.random(0, 1));
         createStuff(Stuff.STAR, MathUtils.random(50, 200));
+
+        for (ObjectMap.Entry<Stuff, Array<StuffBehaviour>> stuff : stuffs) {
+            for (int i = 0; i < stuff.value.size; i++) {
+                if (stuff.value.get(i).getGameObject().getState() == GameObjectState.DESTROYED)
+                    stuff.value.removeIndex(i);
+            }
+        }
     }
 
     private void createStuff(Stuff stuff, int amount) {

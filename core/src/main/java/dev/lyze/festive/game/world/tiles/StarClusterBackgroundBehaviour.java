@@ -13,6 +13,8 @@ import lombok.Data;
 public class StarClusterBackgroundBehaviour extends StuffBehaviour {
     private final Array<Star> stars = new Array<>();
 
+    private float time = 2f;
+
     public StarClusterBackgroundBehaviour(float x, float y, GameObject gameObject) {
         super(x, y, null, gameObject);
 
@@ -22,6 +24,12 @@ public class StarClusterBackgroundBehaviour extends StuffBehaviour {
         for (int i = 0; i < MathUtils.random(3, 10); i++) {
             stars.add(new Star(MathUtils.random(x, x + getWidth()), MathUtils.random(y, y + getHeight()), MathUtils.random(0.01f, 0.02f)));
         }
+    }
+
+    @Override
+    public void update(float delta) {
+        if ((time -= delta) <= 0)
+            getGameObject().destroy();
     }
 
     @Override
