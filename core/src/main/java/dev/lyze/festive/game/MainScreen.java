@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import dev.lyze.festive.CameraBehaviour;
 import dev.lyze.festive.Constants;
 import dev.lyze.festive.game.ui.Ui;
@@ -27,6 +28,7 @@ import javax.naming.CompositeName;
 
 public class MainScreen extends ScreenAdapter {
     private final UnBox unbox = new UnBox(new World(new Vector2(0, -10), true));
+    private final ExtendViewport skyViewport = new ExtendViewport(Constants.viewport.getWorldWidth(), Constants.viewport.getWorldHeight());
     private final Box2DDebugRenderer box2DDebugRenderer = new Box2DDebugRenderer();
     private final SpriteBatch batch = new SpriteBatch();
     private final ShapeRenderer renderer = new ShapeRenderer();
@@ -46,8 +48,8 @@ public class MainScreen extends ScreenAdapter {
         new Tool(player, unbox);
         new CameraBehaviour(player, new GameObject(unbox));
 
-        spaceBehaviour = new SpaceBehaviour(new GameObject(unbox));
-        skyBehaviour = new SkyBehaviour(new GameObject(unbox));
+        spaceBehaviour = new SpaceBehaviour(skyViewport, new GameObject(unbox));
+        skyBehaviour = new SkyBehaviour(skyViewport, new GameObject(unbox));
 
         new Explosion(player, new GameObject(unbox));
         ui = new Ui(unbox);
@@ -74,14 +76,16 @@ public class MainScreen extends ScreenAdapter {
             Constants.debug = !Constants.debug;
 
         unbox.preRender(delta);
-        Constants.viewport.apply();
 
-        renderer.setProjectionMatrix(Constants.viewport.getCamera().combined);
+        skyViewport.getCamera().position.set(Constants.viewport.getCamera().position);
+        skyViewport.apply();
+        renderer.setProjectionMatrix(skyViewport.getCamera().combined);
         renderer.begin(ShapeRenderer.ShapeType.Filled);
         spaceBehaviour.debugRender(renderer);
         skyBehaviour.debugRender(renderer);
         renderer.end();
 
+        Constants.viewport.apply();
         batch.setProjectionMatrix(Constants.viewport.getCamera().combined);
         batch.begin();
         unbox.render(batch);
@@ -108,6 +112,7 @@ public class MainScreen extends ScreenAdapter {
     @Override
     public void resize(int width, int height) {
         Constants.viewport.update(width, height);
+        skyViewport.update(width, height);
         ui.resize(width, height);
     }
 }
