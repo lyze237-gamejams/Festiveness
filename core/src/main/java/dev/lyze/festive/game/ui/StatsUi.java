@@ -13,7 +13,7 @@ public class StatsUi extends UiBehaviour<Table> {
 
     private Label meterLabel, mpsLabel, heightLabel;
 
-    @Getter private int meter;
+    @Getter private int score;
 
     public StatsUi(Ui ui, GameObject gameObject) {
         super(ui, gameObject);
@@ -26,7 +26,7 @@ public class StatsUi extends UiBehaviour<Table> {
 
         var innerTable = new Table();
 
-        innerTable.add(meterLabel = new Label("0 meter", Constants.assets.getSkin())).row();
+        innerTable.add(meterLabel = new Label("0 score", Constants.assets.getSkin())).row();
         innerTable.add(mpsLabel = new Label("0 m/s", Constants.assets.getSkin(), "subtext")).row();
         innerTable.add(heightLabel = new Label("0 m high", Constants.assets.getSkin(), "subtext"));
 
@@ -42,8 +42,16 @@ public class StatsUi extends UiBehaviour<Table> {
 
     @Override
     public void update(float delta) {
-        meterLabel.setText((meter = (int) bodyToTrack.getPosition().x - 2) + " meter");
+        meterLabel.setText((score + getMeter()) + " score");
         mpsLabel.setText((int) bodyToTrack.getLinearVelocity().len() + " m/s");
         heightLabel.setText((int) bodyToTrack.getPosition().y - 2 + " m high");
+    }
+
+    public int getMeter() {
+        return (int) bodyToTrack.getPosition().x - 2;
+    }
+
+    public void addScore() {
+        score += 100;
     }
 }

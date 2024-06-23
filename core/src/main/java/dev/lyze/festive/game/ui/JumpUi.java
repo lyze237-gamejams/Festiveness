@@ -34,7 +34,7 @@ public class JumpUi extends UiBehaviour<Table> {
 
         for (int i = 0; i < jumps; i++) {
             var image = new Image(Constants.assets.getBomb());
-            table.add(image).size(image.getWidth() * 0.1f, image.getHeight() * 0.1f);
+            table.add(image).size(image.getWidth() * 0.2f, image.getHeight() * 0.2f);
         }
 
         return table;
@@ -47,6 +47,11 @@ public class JumpUi extends UiBehaviour<Table> {
         jumps--;
 
         getUnBox().findBehaviour(BalancerBehaviour.class).getPlayer().applyJump();
+        start();
+    }
+
+    public void addJump() {
+        jumps = Math.min(maxJumps, jumps + 1);
         start();
     }
 }

@@ -45,7 +45,7 @@ public class GameOverMenu extends UiBehaviour<Table> {
 
         var meter = getUnBox().findBehaviour(StatsUi.class).getMeter();
         var titleText = won ? "Touchdown!" : "Oh no...";
-        var subtitleText = won ? "Good job, you helped morgan reach festive island!\nWith an impressive score of " + meter + " meter!" : "Looks like you didn't manage to help him... :(";
+        var subtitleText = won ? "Good job, you helped morgan reach festive island!\nWith an impressive jump of " + meter + " meter!" : "Looks like you didn't manage to help him... :(";
 
         table.add(new Label(titleText, Constants.assets.getSkin(), "title")).row();
         Label subtitle = new Label(subtitleText, Constants.assets.getSkin(), "subtitle");

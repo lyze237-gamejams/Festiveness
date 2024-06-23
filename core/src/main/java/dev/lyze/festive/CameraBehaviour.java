@@ -33,7 +33,7 @@ public class CameraBehaviour extends BehaviourAdapter {
             new EntityFocus(position -> player.getStomach2().getBody().getPosition()),
             new SnapToWindowCamera2DConstraint(new Rectangle(snapPos, snapPos, snapSize, snapSize), new Vector2(0.2f, 0.2f)),
             new LockedToWindowCamera2DConstraint(new Rectangle(lockPos, lockPos, lockSize, lockSize)),
-            new SceneCamera2DConstraint(new Rectangle(0, 0, 20000f, 20000f))
+            new SceneCamera2DConstraint(new Rectangle(0, 0, Float.MAX_VALUE, Float.MAX_VALUE))
             );
     }
 

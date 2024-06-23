@@ -2,19 +2,20 @@ package dev.lyze.festive.game.world;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.ObjectMap;
+import com.badlogic.gdx.utils.OrderedMap;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import dev.lyze.festive.Constants;
+import dev.lyze.festive.game.world.tiles.StuffBehaviour;
 import dev.lyze.gdxUnBox2d.GameObject;
 import dev.lyze.gdxUnBox2d.behaviours.BehaviourAdapter;
 import lombok.AllArgsConstructor;
 
 import java.util.LinkedList;
-import java.util.regex.MatchResult;
 
 public class BackgroundBehaviour extends BehaviourAdapter {
     private final LinkedList<Background> backgrounds = new LinkedList<>();
@@ -37,16 +38,25 @@ public class BackgroundBehaviour extends BehaviourAdapter {
 
         var after = createdAfterIfNeeded(cameraPosition, mostRightX);
         if (after != null)
-            createClouds(after.x);
+            createStuffs();
 
         var before = createBeforeIfNeeded(cameraPosition, mostLeftX);
         if (before != null)
-            createClouds(before.x);
+            createStuffs();
     }
 
-    private final Array<CloudBackgroundBehaviour> clouds = new Array<>();
+    private final ObjectMap<Stuff, Array<StuffBehaviour>> stuffs = new OrderedMap<>();
+    private void createStuffs() {
+        createStuff(Stuff.CLOUD, MathUtils.random(20, 100));
+        createStuff(Stuff.COIN, MathUtils.random(0, 3));
+        createStuff(Stuff.BOMB, MathUtils.random(0, 1));
+        createStuff(Stuff.BOOSTER, MathUtils.random(0, 2));
+    }
 
-    private void createClouds(int screen) {
+    private void createStuff(Stuff stuff, int amount) {
+        if (!stuffs.containsKey(stuff))
+            stuffs.put(stuff, new Array<>());
+
         var x = Constants.viewport.getCamera().position.x;
         var y = Constants.viewport.getCamera().position.y;
 
@@ -59,14 +69,12 @@ public class BackgroundBehaviour extends BehaviourAdapter {
         var topRightX = x + Constants.viewport.getWorldWidth() / 2f + Constants.viewport.getWorldWidth();
         var topRightY = y + Constants.viewport.getWorldHeight() / 2f + Constants.viewport.getWorldHeight();
 
-        var cloudAmount = MathUtils.random(20, 100);
-
-        for (int cloudIndex = 0; cloudIndex < cloudAmount; cloudIndex++) {
-            addCloud(bottomLeftX, bottomLeftY, topRightX, topRightY);
+        for (int amountIndex = 0; amountIndex < amount; amountIndex++) {
+            addThing(stuff, bottomLeftX, bottomLeftY, topRightX, topRightY);
         }
     }
 
-    private void addCloud(float bottomLeftX, float bottomLeftY, float topRightX, float topRightY) {
+    private void addThing(Stuff stuff, float bottomLeftX, float bottomLeftY, float topRightX, float topRightY) {
         for (int tries = 0; tries < 10; tries++) {
             var sprite = Constants.assets.getRandomCloudTile();
 
@@ -88,8 +96,8 @@ public class BackgroundBehaviour extends BehaviourAdapter {
                 continue;
 
             var cool = true;
-            for (CloudBackgroundBehaviour cloud : clouds) {
-                Rectangle.tmp2.set(cloud.getX(), cloud.getY(), cloud.getWidth(), cloud.getHeight());
+            for (var obj : stuffs.get(stuff)) {
+                Rectangle.tmp2.set(obj.getX(), obj.getY(), obj.getWidth(), obj.getHeight());
                 if (Rectangle.tmp.overlaps(Rectangle.tmp2)) {
                     cool = false;
                     break;
@@ -97,7 +105,20 @@ public class BackgroundBehaviour extends BehaviourAdapter {
             }
 
             if (cool) {
-                clouds.add(new CloudBackgroundBehaviour(x, y, sprite, new GameObject("Cloud", getUnBox())));
+                switch (stuff) {
+                    case CLOUD:
+                        stuffs.get(stuff).add(new CloudBackgroundBehaviour(x, y, sprite, new GameObject("Cloud", getUnBox())));
+                        break;
+                    case COIN:
+                        stuffs.get(stuff).add(new CoinBackgroundBehaviour(x, y, new GameObject("Coin", getUnBox())));
+                        break;
+                    case BOOSTER:
+                        stuffs.get(stuff).add(new BoosterBackgroundBehaviour(x, y, new GameObject("Booster", getUnBox())));
+                        break;
+                    case BOMB:
+                        stuffs.get(stuff).add(new BombBackgroundBehaviour(x, y, new GameObject("Bomb", getUnBox())));
+                        break;
+                }
                 return;
             }
         }
@@ -144,5 +165,9 @@ public class BackgroundBehaviour extends BehaviourAdapter {
             if (overlay != null)
                 batch.draw(overlay, x * viewport.getWorldWidth(), y * viewport.getWorldHeight(), viewport.getWorldWidth(), viewport.getWorldHeight());
         }
+    }
+
+    private enum Stuff {
+        CLOUD, COIN, BOOSTER, BOMB
     }
 }

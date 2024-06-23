@@ -35,7 +35,7 @@ public class BoostUi extends UiBehaviour<Table> {
 
         for (int i = 0; i < boosts; i++) {
             var image = new Image(Constants.assets.getBooster());
-            table.add(image).size(image.getWidth() * 0.1f, image.getHeight() * 0.1f);
+            table.add(image).size(image.getWidth() * 0.2f, image.getHeight() * 0.2f);
         }
 
         return table;
@@ -48,6 +48,11 @@ public class BoostUi extends UiBehaviour<Table> {
         boosts--;
 
         getUnBox().findBehaviour(BalancerBehaviour.class).getPlayer().applySpeedBoost();
+        start();
+    }
+
+    public void addBoost() {
+        boosts = Math.min(maxBoosts, boosts + 1);
         start();
     }
 }
