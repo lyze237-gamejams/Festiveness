@@ -70,6 +70,7 @@ public class GameOverMenu extends UiBehaviour<Table> {
                     System.out.println(submitScoreButton.isDisabled());
                 }
             });
+
             highscoreTable.add(nameField).padLeft(8).row();
             highscoreTable.add().pad(2).row();
             submitScoreButton.addListener(new ChangeListener() {
@@ -109,7 +110,7 @@ public class GameOverMenu extends UiBehaviour<Table> {
                         }
                     });
 
-                    gj.addGuestScore(Constants.gameId, key, nameField.getText(), statsUi.getHighestMeter() + " meter", (long) statsUi.getHighestMeter(), 919229, null);
+                    gj.addGuestScore(Constants.gameId, key, nameField.getText(), ((long) statsUi.getHighestMeter()) + " meter", (long) statsUi.getHighestMeter(), 919229, null);
 
                     submitScoreButton.setText("Uploading");
                     submitScoreButton.setDisabled(true);
