@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
+import com.github.raeleus.gamejoltapi.GameJoltApi;
 import dev.lyze.festive.Constants;
 import dev.lyze.festive.eventsystem.EventListener;
 import dev.lyze.festive.eventsystem.events.OnTouchdownEvent;
@@ -46,14 +47,54 @@ public class GameOverMenu extends UiBehaviour<Table> {
     private Table generateLeftTable(boolean won) {
         var table = new Table();
 
-        var meter = getUnBox().findBehaviour(StatsUi.class).getMeter();
+        var statsUi = getUnBox().findBehaviour(StatsUi.class);
+        var meter = statsUi.getMeter();
         var titleText = won ? "Touchdown!" : "Oh no...";
         var subtitleText = won ? "Good job, you helped morgan reach festive island!\nWith an impressive jump of " + meter + " meter!" : "Looks like you didn't manage to help him... :(";
 
         table.add(new Label(titleText, Constants.assets.getSkin(), "title")).row();
-        Label subtitle = new Label(subtitleText, Constants.assets.getSkin(), "subtitle");
+        var subtitle = new Label(subtitleText, Constants.assets.getSkin(), "subtitle");
         subtitle.setAlignment(Align.center, Align.center);
         table.add(subtitle).padBottom(24).row();
+
+        if (won) {
+            var highscoreTable = new Table();
+            highscoreTable.add(new Label("Enter Username:", Constants.assets.getSkin(), "subtitle"));
+            var nameField = new TextField("", Constants.assets.getSkin());
+            var submitScoreButton = new TextButton("Submit Score", Constants.assets.getSkin(), "smol");
+            submitScoreButton.setDisabled(true);
+            nameField.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    submitScoreButton.setDisabled(nameField.getText().isEmpty());
+                    System.out.println(submitScoreButton.isDisabled());
+                }
+            });
+            highscoreTable.add(nameField).padLeft(8).row();
+            highscoreTable.add().pad(2).row();
+            submitScoreButton.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    var gj = new GameJoltApi();
+                    gj.addGuestScore(Constants.gameId, Gdx.files.internal("key.txt").readString(), nameField.getText(), statsUi.getScore() + statsUi.getMeter());
+                    submitScoreButton.setText("Submitted");
+                    submitScoreButton.removeListener(this);
+                    submitScoreButton.setDisabled(true);
+                }
+            });
+            highscoreTable.add(submitScoreButton);
+            var viewHighscoresButton = new TextButton("View Highscores", Constants.assets.getSkin(), "smol");
+            viewHighscoresButton.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    Gdx.net.openURI("https://gamejolt.com/games/a-rather-festive-birb/906083/scores/917542/best");
+                }
+            });
+            highscoreTable.add(viewHighscoresButton);
+
+            table.add(highscoreTable).padBottom(24).row();
+        }
+
 
         TextButton startGame = new TextButton("Retry", Constants.assets.getSkin());
         startGame.addListener(new ChangeListener() {

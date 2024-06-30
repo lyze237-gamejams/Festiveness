@@ -1,6 +1,7 @@
 atlases/main.atlas
 atlases/main.png
 Cursor.png
+key.txt
 music/8-Bit-Puzzler.mp3
 music/Cute-8-Bit-Monsters.mp3
 skin/Alef-Bold.fnt

@@ -24,4 +24,6 @@ public class Constants {
     public static final Assets assets = new Assets();
 
     public static boolean debug = false;
+
+    public static String gameId = "906083";
 }

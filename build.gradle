@@ -35,6 +35,17 @@ task texturePacker {
   }
 }
 
+task writeEnvToKeyFile {
+  doLast {
+    def env = System.getenv('GAMEJOLT_KEY')
+    if (env == null) {
+      throw new GradleException('GAMEJOLT_KEY environment variable is not set')
+    }
+    def assetsFolder = new File("${project.rootDir}/assets/")
+    new File(assetsFolder, 'key.txt').text = env
+  }
+}
+
 configure(subprojects) {
   apply plugin: 'java-library'
   apply plugin: 'io.freefair.lombok'
@@ -44,6 +55,7 @@ configure(subprojects) {
   }
 
   compileJava.dependsOn texturePacker
+  compileJava.dependsOn writeEnvToKeyFile
 
   // From https://lyze.dev/2021/04/29/libGDX-Internal-Assets-List/
   // The article can be helpful when using assets.txt in your project.

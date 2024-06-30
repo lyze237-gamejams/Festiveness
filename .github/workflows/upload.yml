@@ -7,6 +7,7 @@ on:
 
 env:
   BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+  GAMEJOLT_KEY: ${{ secrets.GAMEJOLT_KEY }}
 
 jobs:
   linux:

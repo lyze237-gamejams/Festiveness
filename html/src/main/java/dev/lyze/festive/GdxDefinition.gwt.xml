@@ -9,6 +9,7 @@
   <inherits name="dev.lyze.festive.Main" />
   <inherits name="dev.lyze.gdxUnBox2d" />
   <inherits name="space.earlygrey.shapedrawer" />
+  <inherits name="com.github.raeleus.gamejoltapi" />
   <inherits name="camera2d" />
   <entry-point class="dev.lyze.festive.gwt.GwtLauncher" />
   <set-configuration-property name="gdx.assetpath" value="../assets" />
