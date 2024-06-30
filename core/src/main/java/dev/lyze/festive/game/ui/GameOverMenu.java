@@ -77,11 +77,16 @@ public class GameOverMenu extends UiBehaviour<Table> {
                 public void changed(ChangeEvent event, Actor actor) {
                     var gj = new GameJoltApi();
                     var key = Gdx.files.internal("key.txt").readString();
-                    gj.addGuestScore(Constants.gameId, key, nameField.getText(), statsUi.getScore() + statsUi.getMeter());
-                    gj.addGuestScore(Constants.gameId, key, nameField.getText(), (int) statsUi.getHighestMeter(), 919229, new GameJoltListener() {
+                    var request = GameJoltScores.ScoresAddRequest.builder()
+                        .gameID(Constants.gameId)
+                        .score(Long.toString(statsUi.getScore() + statsUi.getMeter()))
+                        .sort((long) statsUi.getScore() + statsUi.getMeter())
+                        .guest(nameField.getText())
+                        .build();
+
+                    gj.sendRequest(request, key, new GameJoltScores.ScoresAddListener() {
                         @Override
-                        public void response(GameJoltRequest request, GameJoltValue value) {
-                            var response = (GameJoltScores.ScoresAddValue) value;
+                        public void scoresAdd(GameJoltScores.ScoresAddValue response) {
                             if (response.success) {
                                 submitScoreButton.setText("Submitted");
                             } else {
@@ -89,19 +94,9 @@ public class GameOverMenu extends UiBehaviour<Table> {
                                 submitScoreButton.setDisabled(false);
                             }
                         }
-
-                        @Override
-                        public void failed(Throwable t) {
-                            submitScoreButton.setText(t.getMessage());
-                            submitScoreButton.setDisabled(false);
-                        }
-
-                        @Override
-                        public void cancelled() {
-                            submitScoreButton.setText("Cancelled");
-                            submitScoreButton.setDisabled(false);
-                        }
                     });
+
+                    gj.addGuestScore(Constants.gameId, key, nameField.getText(), (long) statsUi.getHighestMeter(), 919229, null);
 
                     submitScoreButton.setText("Uploading");
                     submitScoreButton.setDisabled(true);
