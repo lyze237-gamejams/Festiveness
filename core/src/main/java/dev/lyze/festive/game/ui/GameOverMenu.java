@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
-import com.github.raeleus.gamejoltapi.GameJoltApi;
+import com.github.raeleus.gamejoltapi.*;
 import dev.lyze.festive.Constants;
 import dev.lyze.festive.eventsystem.EventListener;
 import dev.lyze.festive.eventsystem.events.OnTouchdownEvent;
@@ -78,9 +78,32 @@ public class GameOverMenu extends UiBehaviour<Table> {
                     var gj = new GameJoltApi();
                     var key = Gdx.files.internal("key.txt").readString();
                     gj.addGuestScore(Constants.gameId, key, nameField.getText(), statsUi.getScore() + statsUi.getMeter());
-                    gj.addGuestScore(Constants.gameId, key, nameField.getText(), (int) statsUi.getHighestMeter(), 919229, null);
-                    submitScoreButton.setText("Submitted");
-                    submitScoreButton.removeListener(this);
+                    gj.addGuestScore(Constants.gameId, key, nameField.getText(), (int) statsUi.getHighestMeter(), 919229, new GameJoltListener() {
+                        @Override
+                        public void response(GameJoltRequest request, GameJoltValue value) {
+                            var response = (GameJoltScores.ScoresAddValue) value;
+                            if (response.success) {
+                                submitScoreButton.setText("Submitted");
+                            } else {
+                                submitScoreButton.setText(response.message);
+                                submitScoreButton.setDisabled(false);
+                            }
+                        }
+
+                        @Override
+                        public void failed(Throwable t) {
+                            submitScoreButton.setText(t.getMessage());
+                            submitScoreButton.setDisabled(false);
+                        }
+
+                        @Override
+                        public void cancelled() {
+                            submitScoreButton.setText("Cancelled");
+                            submitScoreButton.setDisabled(false);
+                        }
+                    });
+
+                    submitScoreButton.setText("Uploading");
                     submitScoreButton.setDisabled(true);
                 }
             });
