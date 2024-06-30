@@ -78,15 +78,15 @@ public class GameOverMenu extends UiBehaviour<Table> {
                 public void changed(ChangeEvent event, Actor actor) {
                     var gj = new GameJoltApi();
                     var key = Gdx.files.internal("key.txt").readString();
-                    var request = GameJoltScores.ScoresAddRequest.builder()
+
+                    var totalScore = (long) statsUi.getScore() + statsUi.getMeter();
+                    gj.sendRequest(GameJoltScores.ScoresAddRequest.builder()
                         .gameID(Constants.gameId)
-                        .score(Long.toString(statsUi.getScore() + statsUi.getMeter()) + " points")
-                        .sort((long) statsUi.getScore() + statsUi.getMeter())
+                        .score(totalScore + " points")
+                        .sort(totalScore)
                         .guest(nameField.getText())
                         .extraData(statsUi.getMeter() + " + " + statsUi.getScore() + " (" + (long) statsUi.getTotalDelta() + ")")
-                        .build();
-
-                    gj.sendRequest(request, key, new GameJoltScores.ScoresAddListener() {
+                        .build(), key, new GameJoltScores.ScoresAddListener() {
                         @Override
                         public void scoresAdd(GameJoltScores.ScoresAddValue response) {
                             if (response.success) {
@@ -110,7 +110,37 @@ public class GameOverMenu extends UiBehaviour<Table> {
                         }
                     });
 
-                    gj.addGuestScore(Constants.gameId, key, nameField.getText(), ((long) statsUi.getHighestMeter()) + " meter", (long) statsUi.getHighestMeter(), 919229, null);
+                    var totalMeter = (long) statsUi.getHighestMeter();
+                    gj.sendRequest(GameJoltScores.ScoresAddRequest.builder()
+                        .gameID(Constants.gameId)
+                        .score(totalMeter + " meter")
+                        .sort(totalMeter)
+                        .guest(nameField.getText())
+                        .tableID(919229)
+                        .extraData(statsUi.getMeter() + " + " + statsUi.getScore() + " (" + (long) statsUi.getTotalDelta() + ")")
+                        .build(), key, new GameJoltScores.ScoresAddListener() {
+                        @Override
+                        public void scoresAdd(GameJoltScores.ScoresAddValue response) {
+                            if (response.success) {
+                                submitScoreButton.setText("Submitted");
+                            } else {
+                                submitScoreButton.setText(response.message);
+                                submitScoreButton.setDisabled(false);
+                            }
+                        }
+
+                        @Override
+                        public void failed(Throwable t) {
+                            submitScoreButton.setText(t.getMessage());
+                            submitScoreButton.setDisabled(false);
+                        }
+
+                        @Override
+                        public void cancelled() {
+                            submitScoreButton.setText("Request cancelled");
+                            submitScoreButton.setDisabled(false);
+                        }
+                    });
 
                     submitScoreButton.setText("Uploading");
                     submitScoreButton.setDisabled(true);
