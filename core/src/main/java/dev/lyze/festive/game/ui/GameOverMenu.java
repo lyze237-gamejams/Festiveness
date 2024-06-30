@@ -95,6 +95,18 @@ public class GameOverMenu extends UiBehaviour<Table> {
                                 submitScoreButton.setDisabled(false);
                             }
                         }
+
+                        @Override
+                        public void failed(Throwable t) {
+                            submitScoreButton.setText(t.getMessage());
+                            submitScoreButton.setDisabled(false);
+                        }
+
+                        @Override
+                        public void cancelled() {
+                            submitScoreButton.setText("Request cancelled");
+                            submitScoreButton.setDisabled(false);
+                        }
                     });
 
                     gj.addGuestScore(Constants.gameId, key, nameField.getText(), statsUi.getHighestMeter() + " meter", (long) statsUi.getHighestMeter(), 919229, null);
