@@ -68,7 +68,7 @@ public class MainScreen extends ScreenAdapter {
     public void render(float delta) {
         ScreenUtils.clear(spaceBehaviour.getTopSkyColor());
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.R))
+        if (Gdx.input.isKeyJustPressed(Input.Keys.F9))
             ((Game) Gdx.app.getApplicationListener()).setScreen(new MainScreen());
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.F10))
