@@ -1,5 +1,6 @@
 package dev.lyze.festive.game.ui;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -15,6 +16,8 @@ public class StatsUi extends UiBehaviour<Table> {
 
     @Getter private int score;
     @Getter private float highestMeter;
+
+    @Getter private float totalDelta;
 
     public StatsUi(Ui ui, GameObject gameObject) {
         super(ui, gameObject);
@@ -43,6 +46,8 @@ public class StatsUi extends UiBehaviour<Table> {
 
     @Override
     public void update(float delta) {
+        totalDelta += delta;
+
         meterLabel.setText((score + getMeter()) + " score");
         mpsLabel.setText((int) bodyToTrack.getLinearVelocity().len() + " m/s");
         heightLabel.setText((int) bodyToTrack.getPosition().y - 2 + " m high");

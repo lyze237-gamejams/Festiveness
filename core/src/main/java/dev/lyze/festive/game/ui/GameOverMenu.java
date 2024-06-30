@@ -82,6 +82,7 @@ public class GameOverMenu extends UiBehaviour<Table> {
                         .score(Long.toString(statsUi.getScore() + statsUi.getMeter()) + " points")
                         .sort((long) statsUi.getScore() + statsUi.getMeter())
                         .guest(nameField.getText())
+                        .extraData(statsUi.getMeter() + " + " + statsUi.getScore() + " (" + (long) statsUi.getTotalDelta() + ")")
                         .build();
 
                     gj.sendRequest(request, key, new GameJoltScores.ScoresAddListener() {
