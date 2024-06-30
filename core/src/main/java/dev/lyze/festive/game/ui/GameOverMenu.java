@@ -79,7 +79,7 @@ public class GameOverMenu extends UiBehaviour<Table> {
                     var key = Gdx.files.internal("key.txt").readString();
                     var request = GameJoltScores.ScoresAddRequest.builder()
                         .gameID(Constants.gameId)
-                        .score(Long.toString(statsUi.getScore() + statsUi.getMeter()))
+                        .score(Long.toString(statsUi.getScore() + statsUi.getMeter()) + " points")
                         .sort((long) statsUi.getScore() + statsUi.getMeter())
                         .guest(nameField.getText())
                         .build();
@@ -96,7 +96,7 @@ public class GameOverMenu extends UiBehaviour<Table> {
                         }
                     });
 
-                    gj.addGuestScore(Constants.gameId, key, nameField.getText(), (long) statsUi.getHighestMeter(), 919229, null);
+                    gj.addGuestScore(Constants.gameId, key, nameField.getText(), statsUi.getHighestMeter() + " meter", (long) statsUi.getHighestMeter(), 919229, null);
 
                     submitScoreButton.setText("Uploading");
                     submitScoreButton.setDisabled(true);
