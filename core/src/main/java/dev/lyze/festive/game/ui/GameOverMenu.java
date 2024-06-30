@@ -57,7 +57,7 @@ public class GameOverMenu extends UiBehaviour<Table> {
         subtitle.setAlignment(Align.center, Align.center);
         table.add(subtitle).padBottom(24).row();
 
-        if (won) {
+        if (true) {
             var highscoreTable = new Table();
             highscoreTable.add(new Label("Enter Username:", Constants.assets.getSkin(), "subtitle"));
             var nameField = new TextField("", Constants.assets.getSkin());
@@ -76,7 +76,9 @@ public class GameOverMenu extends UiBehaviour<Table> {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
                     var gj = new GameJoltApi();
-                    gj.addGuestScore(Constants.gameId, Gdx.files.internal("key.txt").readString(), nameField.getText(), statsUi.getScore() + statsUi.getMeter());
+                    var key = Gdx.files.internal("key.txt").readString();
+                    gj.addGuestScore(Constants.gameId, key, nameField.getText(), statsUi.getScore() + statsUi.getMeter());
+                    gj.addGuestScore(Constants.gameId, key, nameField.getText(), (int) statsUi.getHighestMeter(), 919229, null);
                     submitScoreButton.setText("Submitted");
                     submitScoreButton.removeListener(this);
                     submitScoreButton.setDisabled(true);

@@ -14,6 +14,7 @@ public class StatsUi extends UiBehaviour<Table> {
     private Label meterLabel, mpsLabel, heightLabel;
 
     @Getter private int score;
+    @Getter private float highestMeter;
 
     public StatsUi(Ui ui, GameObject gameObject) {
         super(ui, gameObject);
@@ -45,6 +46,8 @@ public class StatsUi extends UiBehaviour<Table> {
         meterLabel.setText((score + getMeter()) + " score");
         mpsLabel.setText((int) bodyToTrack.getLinearVelocity().len() + " m/s");
         heightLabel.setText((int) bodyToTrack.getPosition().y - 2 + " m high");
+
+        highestMeter = Math.max(highestMeter, bodyToTrack.getPosition().y - 2);
     }
 
     public int getMeter() {
