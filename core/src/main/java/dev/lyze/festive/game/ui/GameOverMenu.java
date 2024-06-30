@@ -57,7 +57,7 @@ public class GameOverMenu extends UiBehaviour<Table> {
         subtitle.setAlignment(Align.center, Align.center);
         table.add(subtitle).padBottom(24).row();
 
-        if (true) {
+        if (statsUi.getMeter() > 100) {
             var highscoreTable = new Table();
             highscoreTable.add(new Label("Enter Username:", Constants.assets.getSkin(), "subtitle"));
             var nameField = new TextField("", Constants.assets.getSkin());
